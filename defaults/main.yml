@@ -34,7 +34,7 @@ syncstorage_rs_docker_container_image_self_build_repo_version: "main"
 syncstorage_rs_docker_container_image_self_build_repo_base: "app"
 syncstorage_rs_docker_container_image_self_build_src_files_path: "{{ syncstorage_rs_docker_base_path }}/docker-src"
 
-# Controls whether the container exposes its HTTP port (tcp/80 in the container).
+# Controls whether the container exposes its HTTP port (tcp/8000 in the container).
 #
 # Takes an "<ip>:<port>" or "<port>" value (e.g. "127.0.0.1:2586"), or empty string to not expose.
 syncstorage_rs_docker_container_http_host_bind_port: ""
@@ -43,7 +43,7 @@ syncstorage_rs_docker_container_http_host_bind_port: ""
 syncstorage_rs_docker_container_network: "{{ syncstorage_rs_docker_identifier }}"
 
 # The port number in the container
-syncstorage_rs_docker_container_http_port: 80
+syncstorage_rs_docker_container_http_port: 8000
 
 # A list of additional container networks that the container would be connected to.
 # The role does not create these networks, so make sure they already exist.
