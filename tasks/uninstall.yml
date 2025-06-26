@@ -4,27 +4,27 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ---
-- name: Check existence of YOURLS systemd service
+- name: Check existence of syncstorage-rs-docker systemd service
   ansible.builtin.stat:
     path: "{{ devture_systemd_docker_base_systemd_path }}/{{ yourls_identifier }}.service"
   register: yourls_service_stat
 
-- name: Uninstall YOURLS systemd services and files
+- name: Uninstall syncstorage-rs-docker systemd services and files
   when: yourls_service_stat.stat.exists | bool
   block:
-    - name: Ensure YOURLS systemd service is stopped
+    - name: Ensure syncstorage-rs-docker systemd service is stopped
       ansible.builtin.service:
         name: "{{ yourls_identifier }}"
         state: stopped
         enabled: false
         daemon_reload: true
 
-    - name: Ensure YOURLS systemd service does not exist
+    - name: Ensure syncstorage-rs-docker systemd service does not exist
       ansible.builtin.file:
         path: "{{ devture_systemd_docker_base_systemd_path }}/{{ yourls_identifier }}.service"
         state: absent
 
-    - name: Ensure YOURLS path does not exist
+    - name: Ensure syncstorage-rs-docker path does not exist
       ansible.builtin.file:
         path: "{{ yourls_base_path }}"
         state: absent

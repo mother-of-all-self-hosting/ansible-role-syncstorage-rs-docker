@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ---
-- name: Ensure YOURLS path exists
+- name: Ensure syncstorage-rs-docker path exists
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
@@ -14,7 +14,7 @@
   with_items:
     - "{{ yourls_base_path }}"
 
-- name: Ensure YOURLS support files installed
+- name: Ensure syncstorage-rs-docker support files installed
   ansible.builtin.template:
     src: "{{ role_path }}/templates/{{ item }}.j2"
     dest: "{{ yourls_base_path }}/{{ item }}"
@@ -25,10 +25,10 @@
     - env
     - labels
 
-- name: Run if self-building of YOURLS container image is not enabled
+- name: Run if self-building of syncstorage-rs-docker container image is not enabled
   when: "not yourls_container_image_self_build | bool"
   block:
-    - name: Ensure YOURLS container image is pulled via community.docker.docker_image
+    - name: Ensure syncstorage-rs-docker container image is pulled via community.docker.docker_image
       when: devture_systemd_docker_base_container_image_pull_method == 'ansible-module'
       community.docker.docker_image:
         name: "{{ yourls_container_image }}"
@@ -40,7 +40,7 @@
       delay: "{{ devture_playbook_help_container_retries_delay }}"
       until: result is not failed
 
-    - name: Ensure YOURLS container image is pulled via ansible.builtin.command
+    - name: Ensure syncstorage-rs-docker container image is pulled via ansible.builtin.command
       when: devture_systemd_docker_base_container_image_pull_method == 'command'
       ansible.builtin.command:
         cmd: "{{ devture_systemd_docker_base_host_command_docker }} pull {{ yourls_container_image }}"
@@ -50,10 +50,10 @@
       until: result is not failed
       changed_when: "'Downloaded newer image' in result.stdout"
 
-- name: Run if self-building of YOURLS container image is enabled
+- name: Run if self-building of syncstorage-rs-docker container image is enabled
   when: "yourls_container_image_self_build | bool"
   block:
-    - name: Ensure YOURLS repository is present on self-build
+    - name: Ensure syncstorage-rs-docker repository is present on self-build
       ansible.builtin.git:
         repo: "{{ yourls_container_image_self_build_repo }}"
         version: "{{ yourls_container_image_self_build_repo_version }}"
@@ -61,7 +61,7 @@
         force: "yes"
       register: yourls_git_pull_results
 
-    - name: Ensure YOURLS container image is built
+    - name: Ensure syncstorage-rs-docker container image is built
       community.docker.docker_image:
         name: "{{ yourls_container_image_self_build_name }}"
         source: build
@@ -73,7 +73,7 @@
           pull: true
           args:
 
-- name: Ensure YOURLS container network is created via community.docker.docker_network
+- name: Ensure syncstorage-rs-docker container network is created via community.docker.docker_network
   when: devture_systemd_docker_base_container_network_creation_method == 'ansible-module'
   community.docker.docker_network:
     enable_ipv6: "{{ devture_systemd_docker_base_ipv6_enabled }}"
@@ -81,7 +81,7 @@
     driver: bridge
     driver_options: "{{ devture_systemd_docker_base_container_networks_driver_options }}"
 
-- name: Ensure YOURLS container network is created via ansible.builtin.command
+- name: Ensure syncstorage-rs-docker container network is created via ansible.builtin.command
   when: devture_systemd_docker_base_container_network_creation_method == 'command'
   ansible.builtin.command:
     cmd: >-
@@ -93,7 +93,7 @@
   changed_when: network_creation_result.rc == 0
   failed_when: network_creation_result.rc != 0 and 'already exists' not in network_creation_result.stderr
 
-- name: Ensure YOURLS systemd service is present
+- name: Ensure syncstorage-rs-docker systemd service is present
   ansible.builtin.template:
     src: "{{ role_path }}/templates/systemd/yourls.service.j2"
     dest: "{{ devture_systemd_docker_base_systemd_path }}/{{ yourls_identifier }}.service"

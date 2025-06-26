@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ---
-- name: Perform YOURLS installation tasks
+- name: Perform syncstorage-rs-docker installation tasks
   when: yourls_enabled | bool
   tags:
     - setup-all
@@ -12,16 +12,16 @@
     - install-all
     - install-yourls
   block:
-    - name: Validate YOURLS configuration
+    - name: Validate syncstorage-rs-docker configuration
       ansible.builtin.include_tasks: "{{ role_path }}/tasks/validate_config.yml"
-    - name: Install YOURLS
+    - name: Install syncstorage-rs-docker
       ansible.builtin.include_tasks: "{{ role_path }}/tasks/install.yml"
 
-- name: Perform YOURLS uninstallation tasks
+- name: Perform syncstorage-rs-docker uninstallation tasks
   when: not yourls_enabled | bool
   tags:
     - setup-all
     - setup-yourls
   block:
-    - name: Uninstall YOURLS
+    - name: Uninstall syncstorage-rs-docker
       ansible.builtin.include_tasks: "{{ role_path }}/tasks/uninstall.yml"

@@ -7,7 +7,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ---
-# Project source code URL: https://github.com/YOURLS/YOURLS
+# Project source code URL: https://github.com/syncstorage-rs-docker/syncstorage-rs-docker
 
 yourls_enabled: true
 
@@ -21,13 +21,13 @@ yourls_version: 1.10.1
 yourls_uid: ""
 yourls_gid: ""
 
-# The hostname at which YOURLS is served.
+# The hostname at which syncstorage-rs-docker is served.
 yourls_hostname: ""
 
 # Specify URI scheme for yourls_environment_variable_site.
 yourls_scheme: https
 
-# The path at which YOURLS is exposed.
+# The path at which syncstorage-rs-docker is exposed.
 # This value must either be `/` or not end with a slash (e.g. `/yourls`).
 yourls_path_prefix: /
 
@@ -40,7 +40,7 @@ yourls_container_image_force_pull: "{{ yourls_container_image.endswith(':latest'
 
 yourls_container_image_self_build: false
 yourls_container_image_self_build_name: "yourls/containers:{{ yourls_container_image_self_build_repo_version }}"
-yourls_container_image_self_build_repo: "https://github.com/YOURLS/containers.git"
+yourls_container_image_self_build_repo: "https://github.com/syncstorage-rs-docker/containers.git"
 yourls_container_image_self_build_repo_version: "d306b06d6b3e94f1441c65385395f7a384a46101" # For 1.10.1
 yourls_container_image_self_build_repo_base: "apache"
 yourls_container_image_self_build_src_files_path: "{{ yourls_base_path }}/docker-src"
@@ -158,13 +158,13 @@ yourls_floc_optout_enabled: true
 # See: `yourls_http_header_strict_transport_security`
 yourls_hsts_preload_enabled: false
 
-# List of systemd services that the YOURLS systemd service depends on
+# List of systemd services that the syncstorage-rs-docker systemd service depends on
 yourls_systemd_required_services_list: "{{ yourls_systemd_required_services_list_default + yourls_systemd_required_services_list_auto + yourls_systemd_required_services_list_custom }}"
 yourls_systemd_required_services_list_default: "{{ [devture_systemd_docker_base_docker_service_name] if devture_systemd_docker_base_docker_service_name else [] }}"
 yourls_systemd_required_services_list_auto: []
 yourls_systemd_required_services_list_custom: []
 
-# List of systemd services that the YOURLS systemd service wants
+# List of systemd services that the syncstorage-rs-docker systemd service wants
 yourls_systemd_wanted_services_list: []
 
 # env.j2: General configuration

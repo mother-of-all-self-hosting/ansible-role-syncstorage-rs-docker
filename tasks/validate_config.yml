@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ---
-- name: Fail if required YOURLS settings not defined
+- name: Fail if required syncstorage-rs-docker settings not defined
   ansible.builtin.fail:
     msg: >
       You need to define a required configuration setting (`{{ item }}`).
@@ -22,7 +22,7 @@
 - name: Run if Traefik is enabled
   when: yourls_container_labels_traefik_enabled | bool
   block:
-    - name: Fail if required YOURLS Traefik settings not defined
+    - name: Fail if required syncstorage-rs-docker Traefik settings not defined
       ansible.builtin.fail:
         msg: >-
           You need to define a required configuration setting (`{{ item }}`).
