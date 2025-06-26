@@ -8,9 +8,9 @@
   when: syncstorage_rs_docker_enabled | bool
   tags:
     - setup-all
-    - setup-yourls
+    - setup-syncstorage-rs-docker
     - install-all
-    - install-yourls
+    - install-syncstorage-rs-docker
   block:
     - name: Validate syncstorage-rs-docker configuration
       ansible.builtin.include_tasks: "{{ role_path }}/tasks/validate_config.yml"
@@ -21,7 +21,7 @@
   when: not syncstorage_rs_docker_enabled | bool
   tags:
     - setup-all
-    - setup-yourls
+    - setup-syncstorage-rs-docker
   block:
     - name: Uninstall syncstorage-rs-docker
       ansible.builtin.include_tasks: "{{ role_path }}/tasks/uninstall.yml"

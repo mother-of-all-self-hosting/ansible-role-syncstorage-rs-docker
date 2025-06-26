@@ -16,7 +16,7 @@ This role *implicitly* depends on:
 
 Check [defaults/main.yml](defaults/main.yml) for the full list of supported options.
 
-💡 See this [document](docs/configuring-yourls.md) for details about setting up the service with this role.
+💡 See this [document](docs/configuring-syncstorage-rs-docker.md) for details about setting up the service with this role.
 
 ## Development
 
