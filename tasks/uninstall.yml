@@ -6,25 +6,25 @@
 ---
 - name: Check existence of syncstorage-rs-docker systemd service
   ansible.builtin.stat:
-    path: "{{ devture_systemd_docker_base_systemd_path }}/{{ yourls_identifier }}.service"
-  register: yourls_service_stat
+    path: "{{ devture_systemd_docker_base_systemd_path }}/{{ syncstorage_rs_docker_identifier }}.service"
+  register: syncstorage_rs_docker_service_stat
 
 - name: Uninstall syncstorage-rs-docker systemd services and files
-  when: yourls_service_stat.stat.exists | bool
+  when: syncstorage_rs_docker_service_stat.stat.exists | bool
   block:
     - name: Ensure syncstorage-rs-docker systemd service is stopped
       ansible.builtin.service:
-        name: "{{ yourls_identifier }}"
+        name: "{{ syncstorage_rs_docker_identifier }}"
         state: stopped
         enabled: false
         daemon_reload: true
 
     - name: Ensure syncstorage-rs-docker systemd service does not exist
       ansible.builtin.file:
-        path: "{{ devture_systemd_docker_base_systemd_path }}/{{ yourls_identifier }}.service"
+        path: "{{ devture_systemd_docker_base_systemd_path }}/{{ syncstorage_rs_docker_identifier }}.service"
         state: absent
 
     - name: Ensure syncstorage-rs-docker path does not exist
       ansible.builtin.file:
-        path: "{{ yourls_base_path }}"
+        path: "{{ syncstorage_rs_docker_base_path }}"
         state: absent

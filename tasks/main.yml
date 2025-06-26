@@ -5,7 +5,7 @@
 
 ---
 - name: Perform syncstorage-rs-docker installation tasks
-  when: yourls_enabled | bool
+  when: syncstorage_rs_docker_enabled | bool
   tags:
     - setup-all
     - setup-yourls
@@ -18,7 +18,7 @@
       ansible.builtin.include_tasks: "{{ role_path }}/tasks/install.yml"
 
 - name: Perform syncstorage-rs-docker uninstallation tasks
-  when: not yourls_enabled | bool
+  when: not syncstorage_rs_docker_enabled | bool
   tags:
     - setup-all
     - setup-yourls

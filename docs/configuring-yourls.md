@@ -59,20 +59,20 @@ syncstorage_rs_docker_enabled: true
 To enable syncstorage-rs-docker you need to set the hostname as well. To do so, add the following configuration to your `vars.yml` file. Make sure to replace `example.com` with your own value.
 
 ```yaml
-yourls_hostname: "example.com"
+syncstorage_rs_docker_hostname: "example.com"
 ```
 
 After adjusting the hostname, make sure to adjust your DNS records to point the domain to your server.
 
-**Note**: hosting syncstorage-rs-docker under a subpath (by configuring the `yourls_path_prefix` variable) does not seem to be possible due to syncstorage-rs-docker's technical limitations.
+**Note**: hosting syncstorage-rs-docker under a subpath (by configuring the `syncstorage_rs_docker_path_prefix` variable) does not seem to be possible due to syncstorage-rs-docker's technical limitations.
 
 ### Set the admin username and password
 
 You also need to create an instance's user to access to the admin UI after installation. To create one, add the following configuration to your `vars.yml` file. Make sure to replace `YOUR_ADMIN_USERNAME_HERE` and `YOUR_ADMIN_PASSWORD_HERE`.
 
 ```yaml
-yourls_environment_variable_user: YOUR_ADMIN_USERNAME_HERE
-yourls_environment_variable_pass: YOUR_ADMIN_PASSWORD_HERE
+syncstorage_rs_docker_environment_variable_user: YOUR_ADMIN_USERNAME_HERE
+syncstorage_rs_docker_environment_variable_pass: YOUR_ADMIN_PASSWORD_HERE
 ```
 
 ### Mount a directory for loading data (optional)
@@ -82,7 +82,7 @@ By mounting a directory, it becomes possible to load plugins listed [on this lis
 To add the volume for the plugin directory, prepare a local directory on the host machine and add the following configuration to your `vars.yml` file, setting the directory path to `src`:
 
 ```yaml
-yourls_container_additional_volumes:
+syncstorage_rs_docker_container_additional_volumes:
   - type: bind
     src: /path/on/the/host
     dst: /var/www/html/user/plugins
@@ -102,9 +102,9 @@ There are some additional things you may wish to configure about the component.
 
 Take a look at:
 
-- [`defaults/main.yml`](../defaults/main.yml) for some variables that you can customize via your `vars.yml` file. You can override settings (even those that don't have dedicated playbook variables) using the `yourls_environment_variables_additional_variables` variable
+- [`defaults/main.yml`](../defaults/main.yml) for some variables that you can customize via your `vars.yml` file. You can override settings (even those that don't have dedicated playbook variables) using the `syncstorage_rs_docker_environment_variables_additional_variables` variable
 
-For a complete list of syncstorage-rs-docker's config options that you could put in `yourls_environment_variables_additional_variables`, see its [environment variables](https://yourls.org/docs/guide/essentials/configuration).
+For a complete list of syncstorage-rs-docker's config options that you could put in `syncstorage_rs_docker_environment_variables_additional_variables`, see its [environment variables](https://yourls.org/docs/guide/essentials/configuration).
 
 ## Installing
 
@@ -120,7 +120,7 @@ If you use the MASH playbook, the shortcut commands with the [`just` program](ht
 
 After running the command for installation, syncstorage-rs-docker's admin UI is available at the specified hostname with `/admin/` such as `example.com/admin/`.
 
-First, open the page with a web browser to complete installation on the server by clicking "Install syncstorage-rs-docker" button. After that, click the anchor link "syncstorage-rs-docker Administration Page" to log in with the username (`yourls_environment_variable_user`) and password (`yourls_environment_variable_pass`).
+First, open the page with a web browser to complete installation on the server by clicking "Install syncstorage-rs-docker" button. After that, click the anchor link "syncstorage-rs-docker Administration Page" to log in with the username (`syncstorage_rs_docker_environment_variable_user`) and password (`syncstorage_rs_docker_environment_variable_pass`).
 
 The help file is available at `example.com/readme.html`.
 
@@ -135,5 +135,5 @@ You can find the logs in [systemd-journald](https://www.freedesktop.org/software
 If you want to enable debug mode, add the following configuration to your `vars.yml` file and re-run the playbook:
 
 ```yaml
-yourls_environment_variable_debug: true
+syncstorage_rs_docker_environment_variable_debug: true
 ```

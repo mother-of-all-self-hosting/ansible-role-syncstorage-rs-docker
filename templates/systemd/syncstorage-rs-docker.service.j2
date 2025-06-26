@@ -7,12 +7,12 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 #}
 
 [Unit]
-Description=syncstorage-rs-docker ({{ yourls_identifier }})
-{% for service in yourls_systemd_required_services_list %}
+Description=syncstorage-rs-docker ({{ syncstorage_rs_docker_identifier }})
+{% for service in syncstorage_rs_docker_systemd_required_services_list %}
 Requires={{ service }}
 After={{ service }}
 {% endfor %}
-{% for service in yourls_systemd_wanted_services_list %}
+{% for service in syncstorage_rs_docker_systemd_wanted_services_list %}
 Wants={{ service }}
 {% endfor %}
 DefaultDependencies=no
@@ -20,8 +20,8 @@ DefaultDependencies=no
 [Service]
 Type=simple
 Environment="HOME={{ devture_systemd_docker_base_systemd_unit_home_path }}"
-ExecStartPre=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_systemd_docker_base_host_command_docker }} stop -t {{ devture_systemd_docker_base_container_stop_grace_time_seconds }} {{ yourls_identifier }} 2>/dev/null || true'
-ExecStartPre=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_systemd_docker_base_host_command_docker }} rm {{ yourls_identifier }} 2>/dev/null || true'
+ExecStartPre=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_systemd_docker_base_host_command_docker }} stop -t {{ devture_systemd_docker_base_container_stop_grace_time_seconds }} {{ syncstorage_rs_docker_identifier }} 2>/dev/null || true'
+ExecStartPre=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_systemd_docker_base_host_command_docker }} rm {{ syncstorage_rs_docker_identifier }} 2>/dev/null || true'
 
 {#
   Root access with write permission is required for extracting tarball and
@@ -29,7 +29,7 @@ ExecStartPre=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_s
 #}
 ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
       --rm \
-      --name={{ yourls_identifier }} \
+      --name={{ syncstorage_rs_docker_identifier }} \
       --log-driver=none \
       --cap-drop=ALL \
       --cap-add=CHOWN \
@@ -37,32 +37,32 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
       --cap-add=FOWNER \
       --cap-add=SETGID \
       --cap-add=SETUID \
-      --network={{ yourls_container_network }} \
-      {% if yourls_container_http_host_bind_port %}
-      -p {{ yourls_container_http_host_bind_port }}:{{ yourls_container_http_port }} \
+      --network={{ syncstorage_rs_docker_container_network }} \
+      {% if syncstorage_rs_docker_container_http_host_bind_port %}
+      -p {{ syncstorage_rs_docker_container_http_host_bind_port }}:{{ syncstorage_rs_docker_container_http_port }} \
       {% endif %}
-      --env-file={{ yourls_base_path }}/env \
-      --label-file={{ yourls_base_path }}/labels \
-      {% for volume in yourls_container_additional_volumes %}
+      --env-file={{ syncstorage_rs_docker_base_path }}/env \
+      --label-file={{ syncstorage_rs_docker_base_path }}/labels \
+      {% for volume in syncstorage_rs_docker_container_additional_volumes %}
       --mount type={{ volume.type | default('bind' if '/' in volume.src else 'volume') }},src={{ volume.src }},dst={{ volume.dst }}{{ (',' + volume.options) if volume.options else '' }} \
       {% endfor %}
-      {% for arg in yourls_container_extra_arguments %}
+      {% for arg in syncstorage_rs_docker_container_extra_arguments %}
       {{ arg }} \
       {% endfor %}
-      {{ yourls_container_image_self_build_name if yourls_container_image_self_build else yourls_container_image }}
+      {{ syncstorage_rs_docker_container_image_self_build_name if syncstorage_rs_docker_container_image_self_build else syncstorage_rs_docker_container_image }}
 
-{% for network in yourls_container_additional_networks %}
-ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} network connect {{ network }} {{ yourls_identifier }}
+{% for network in syncstorage_rs_docker_container_additional_networks %}
+ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} network connect {{ network }} {{ syncstorage_rs_docker_identifier }}
 {% endfor %}
 
-ExecStart={{ devture_systemd_docker_base_host_command_docker }} start --attach {{ yourls_identifier }}
+ExecStart={{ devture_systemd_docker_base_host_command_docker }} start --attach {{ syncstorage_rs_docker_identifier }}
 
-ExecStop=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_systemd_docker_base_host_command_docker }} stop -t {{ devture_systemd_docker_base_container_stop_grace_time_seconds }} {{ yourls_identifier }} 2>/dev/null || true'
-ExecStop=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_systemd_docker_base_host_command_docker }} rm {{ yourls_identifier }} 2>/dev/null || true'
+ExecStop=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_systemd_docker_base_host_command_docker }} stop -t {{ devture_systemd_docker_base_container_stop_grace_time_seconds }} {{ syncstorage_rs_docker_identifier }} 2>/dev/null || true'
+ExecStop=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_systemd_docker_base_host_command_docker }} rm {{ syncstorage_rs_docker_identifier }} 2>/dev/null || true'
 
 Restart=always
 RestartSec=30
-SyslogIdentifier={{ yourls_identifier }}
+SyslogIdentifier={{ syncstorage_rs_docker_identifier }}
 
 [Install]
 WantedBy=multi-user.target
