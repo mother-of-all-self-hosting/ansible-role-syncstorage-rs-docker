@@ -15,9 +15,9 @@
     - syncstorage_rs_docker_hostname
     - syncstorage_rs_docker_path_prefix
     - syncstorage_rs_docker_container_network
-    - syncstorage_rs_docker_environment_variable_user
-    - syncstorage_rs_docker_environment_variable_pass
-    - syncstorage_rs_docker_environment_variable_cookiekey
+    - syncstorage_rs_docker_environment_variable_mysql_password
+    - syncstorage_rs_docker_environment_variable_sync_master_secret
+    - syncstorage_rs_docker_environment_variable_metrics_hash_secret
 
 - name: Run if Traefik is enabled
   when: syncstorage_rs_docker_container_labels_traefik_enabled | bool

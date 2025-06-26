@@ -20,7 +20,7 @@ syncstorage_rs_docker_gid: ""
 # The hostname at which syncstorage-rs-docker is served.
 syncstorage_rs_docker_hostname: ""
 
-# Specify URI scheme for syncstorage_rs_docker_environment_variable_site.
+# Specify URI scheme for syncstorage_rs_docker_environment_variable_sync_url.
 syncstorage_rs_docker_scheme: https
 
 # The path at which syncstorage-rs-docker is exposed.
@@ -156,38 +156,34 @@ syncstorage_rs_docker_systemd_required_services_list_custom: []
 # List of systemd services that the syncstorage-rs-docker systemd service wants
 syncstorage_rs_docker_systemd_wanted_services_list: []
 
-# env.j2: General configuration
-syncstorage_rs_docker_environment_variable_user: ""
-syncstorage_rs_docker_environment_variable_pass: ""
+syncstorage_rs_docker_environment_variable_sync_url: "{{ syncstorage_rs_docker_scheme }}://{{ syncstorage_rs_docker_hostname }}"
+
+syncstorage_rs_docker_environment_variable_mysql_password: ""
+
+# Master sync key (must be 64 characters long)
+# Put a strong secret below, generated with `pwgen -s 64 1` or in another way
+syncstorage_rs_docker_environment_variable_sync_master_secret: ""
+
+# Hashing secret (must be 64 characters long)
+# Put a strong secret below, generated with `pwgen -s 64 1` or in another way
+syncstorage_rs_docker_environment_variable_metrics_hash_secret: ""
+
+syncstorage_rs_docker_environment_variable_loglevel: info
+
+# Specify the maximum number of users that will be accepted
+syncstorage_rs_docker_environment_variable_sync_capacity: 10
 
 # env.j2: MySQL settings
 #
 # MySQL settings
-syncstorage_rs_docker_environment_variable_db_user: joe
-syncstorage_rs_docker_environment_variable_db_pass: MySeCreTPaSsW0rd
-syncstorage_rs_docker_environment_variable_db_name: syncstorage-rs-docker
-syncstorage_rs_docker_environment_variable_db_host_name: localhost
-syncstorage_rs_docker_environment_variable_db_host_port: 3306
-syncstorage_rs_docker_environment_variable_db_prefix: syncstorage_rs_docker_
+syncstorage_rs_docker_environment_variable_database_username: sync
+syncstorage_rs_docker_environment_variable_database_hostname: localhost
+syncstorage_rs_docker_environment_variable_database_host_port: 3306
+syncstorage_rs_docker_environment_variable_database_name_syncstorage: syncstorage_rs
+syncstorage_rs_docker_environment_variable_database_name_tokenserver: tokenserver_rs
 
-# env.j2: Site options
-#
-syncstorage_rs_docker_environment_variable_site: "{{ syncstorage_rs_docker_scheme }}://{{ syncstorage_rs_docker_hostname }}"
-syncstorage_rs_docker_environment_variable_private: true
-syncstorage_rs_docker_environment_variable_unique_urls: true
-syncstorage_rs_docker_environment_variable_cookiekey: ""
-
-# env.j2: URL Shortening settings
-#
-syncstorage_rs_docker_environment_variable_url_convert: 36
-
-# env.j2: Optional settings
-#
-syncstorage_rs_docker_environment_variable_private_infos: true
-syncstorage_rs_docker_environment_variable_private_api: true
-syncstorage_rs_docker_environment_variable_nostats: false
-syncstorage_rs_docker_environment_variable_debug: false
+syncstorage_rs_docker_environment_variable_sync_syncstorage_database_url: mysql://{{ syncstorage_rs_docker_environment_variable_database_username }}:{{ syncstorage_rs_docker_environment_variable_mysql_password }}@{{ syncstorage_rs_docker_environment_variable_database_hostname }}:{{ syncstorage_rs_docker_environment_variable_database_host_port }}/{{ syncstorage_rs_docker_environment_variable_database_name_syncstorage }}
+syncstorage_rs_docker_environment_variable_sync_tokenserver_database_url: mysql://{{ syncstorage_rs_docker_environment_variable_database_username }}:{{ syncstorage_rs_docker_environment_variable_mysql_password }}@{{ syncstorage_rs_docker_environment_variable_database_hostname }}:{{ syncstorage_rs_docker_environment_variable_database_host_port }}/{{ syncstorage_rs_docker_environment_variable_database_name_tokenserver }}
 
 # Additional environment variables.
-# See: https://syncstorage-rs-docker.org/docs/guide/essentials/configuration#url-shortening-settings
 syncstorage_rs_docker_environment_variables_additional_variables: ""
