@@ -2,7 +2,7 @@
 galaxy_info:
   author: Suguru Hirahara
   company: progressiv
-  role_name: yourls
+  role_name: syncstorage_rs_docker
   namespace: progressiv
   description: syncstorage-rs-docker
   platforms:

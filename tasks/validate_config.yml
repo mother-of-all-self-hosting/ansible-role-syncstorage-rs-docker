@@ -37,5 +37,5 @@
     - name: Fail if syncstorage_rs_docker_container_labels_traefik_path_prefix ends with a slash
       ansible.builtin.fail:
         msg: >-
-          syncstorage_rs_docker_container_labels_traefik_path_prefix (`{{ syncstorage_rs_docker_container_labels_traefik_path_prefix }}`) must either be `/` or not end with a slash (e.g. `/yourls`).
+          syncstorage_rs_docker_container_labels_traefik_path_prefix (`{{ syncstorage_rs_docker_container_labels_traefik_path_prefix }}`) must either be `/` or not end with a slash (e.g. `/syncstorage-rs-docker`).
       when: "syncstorage_rs_docker_container_labels_traefik_path_prefix != '/' and syncstorage_rs_docker_container_labels_traefik_path_prefix[-1] == '/'"

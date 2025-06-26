@@ -95,6 +95,6 @@
 
 - name: Ensure syncstorage-rs-docker systemd service is present
   ansible.builtin.template:
-    src: "{{ role_path }}/templates/systemd/yourls.service.j2"
+    src: "{{ role_path }}/templates/systemd/syncstorage-rs-docker.service.j2"
     dest: "{{ devture_systemd_docker_base_systemd_path }}/{{ syncstorage_rs_docker_identifier }}.service"
     mode: "0644"

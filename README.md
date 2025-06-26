@@ -7,7 +7,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 # syncstorage-rs-docker Ansible role
 
-This is an [Ansible](https://www.ansible.com/) role which installs [syncstorage-rs-docker](https://yourls.org) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
+This is an [Ansible](https://www.ansible.com/) role which installs [syncstorage-rs-docker](https://syncstorage-rs-docker.org) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
 
 This role *implicitly* depends on:
 

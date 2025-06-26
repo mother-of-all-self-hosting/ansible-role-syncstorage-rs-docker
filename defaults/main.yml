@@ -11,11 +11,11 @@
 
 syncstorage_rs_docker_enabled: true
 
-syncstorage_rs_docker_identifier: yourls
+syncstorage_rs_docker_identifier: syncstorage-rs-docker
 syncstorage_rs_docker_base_path: "/{{ syncstorage_rs_docker_identifier }}"
 
 # Note: Update "syncstorage_rs_docker_container_image_self_build_repo_version" when updating
-# renovate: datasource=docker depName=yourls versioning=semver
+# renovate: datasource=docker depName=syncstorage-rs-docker versioning=semver
 syncstorage_rs_docker_version: 1.10.1
 
 syncstorage_rs_docker_uid: ""
@@ -28,10 +28,10 @@ syncstorage_rs_docker_hostname: ""
 syncstorage_rs_docker_scheme: https
 
 # The path at which syncstorage-rs-docker is exposed.
-# This value must either be `/` or not end with a slash (e.g. `/yourls`).
+# This value must either be `/` or not end with a slash (e.g. `/syncstorage-rs-docker`).
 syncstorage_rs_docker_path_prefix: /
 
-syncstorage_rs_docker_container_image: "{{ syncstorage_rs_docker_container_image_registry_prefix }}yourls:{{ syncstorage_rs_docker_container_image_tag }}"
+syncstorage_rs_docker_container_image: "{{ syncstorage_rs_docker_container_image_registry_prefix }}syncstorage-rs-docker:{{ syncstorage_rs_docker_container_image_tag }}"
 syncstorage_rs_docker_container_image_tag: "{{ syncstorage_rs_docker_version }}"
 syncstorage_rs_docker_container_image_registry_prefix: "{{ syncstorage_rs_docker_container_image_registry_prefix_upstream }}"
 syncstorage_rs_docker_container_image_registry_prefix_upstream: "{{ syncstorage_rs_docker_container_image_registry_prefix_upstream_default }}"
@@ -39,7 +39,7 @@ syncstorage_rs_docker_container_image_registry_prefix_upstream_default: docker.i
 syncstorage_rs_docker_container_image_force_pull: "{{ syncstorage_rs_docker_container_image.endswith(':latest') }}"
 
 syncstorage_rs_docker_container_image_self_build: false
-syncstorage_rs_docker_container_image_self_build_name: "yourls/containers:{{ syncstorage_rs_docker_container_image_self_build_repo_version }}"
+syncstorage_rs_docker_container_image_self_build_name: "syncstorage-rs-docker/containers:{{ syncstorage_rs_docker_container_image_self_build_repo_version }}"
 syncstorage_rs_docker_container_image_self_build_repo: "https://github.com/syncstorage-rs-docker/containers.git"
 syncstorage_rs_docker_container_image_self_build_repo_version: "d306b06d6b3e94f1441c65385395f7a384a46101" # For 1.10.1
 syncstorage_rs_docker_container_image_self_build_repo_base: "apache"
@@ -77,7 +77,7 @@ syncstorage_rs_docker_container_additional_volumes: []
 syncstorage_rs_docker_container_labels_traefik_enabled: true
 syncstorage_rs_docker_container_labels_traefik_docker_network: "{{ syncstorage_rs_docker_container_network }}"
 syncstorage_rs_docker_container_labels_traefik_hostname: "{{ syncstorage_rs_docker_hostname }}"
-# The path prefix must either be `/` or not end with a slash (e.g. `/yourls`).
+# The path prefix must either be `/` or not end with a slash (e.g. `/syncstorage-rs-docker`).
 syncstorage_rs_docker_container_labels_traefik_path_prefix: "{{ syncstorage_rs_docker_path_prefix }}"
 syncstorage_rs_docker_container_labels_traefik_rule: "Host(`{{ syncstorage_rs_docker_container_labels_traefik_hostname }}`){% if syncstorage_rs_docker_container_labels_traefik_path_prefix != '/' %} && PathPrefix(`{{ syncstorage_rs_docker_container_labels_traefik_path_prefix }}`){% endif %}"
 syncstorage_rs_docker_container_labels_traefik_priority: 0
@@ -176,7 +176,7 @@ syncstorage_rs_docker_environment_variable_pass: ""
 # MySQL settings
 syncstorage_rs_docker_environment_variable_db_user: joe
 syncstorage_rs_docker_environment_variable_db_pass: MySeCreTPaSsW0rd
-syncstorage_rs_docker_environment_variable_db_name: yourls
+syncstorage_rs_docker_environment_variable_db_name: syncstorage-rs-docker
 syncstorage_rs_docker_environment_variable_db_host_name: localhost
 syncstorage_rs_docker_environment_variable_db_host_port: 3306
 syncstorage_rs_docker_environment_variable_db_prefix: syncstorage_rs_docker_
@@ -200,5 +200,5 @@ syncstorage_rs_docker_environment_variable_nostats: false
 syncstorage_rs_docker_environment_variable_debug: false
 
 # Additional environment variables.
-# See: https://yourls.org/docs/guide/essentials/configuration#url-shortening-settings
+# See: https://syncstorage-rs-docker.org/docs/guide/essentials/configuration#url-shortening-settings
 syncstorage_rs_docker_environment_variables_additional_variables: ""

@@ -18,11 +18,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Setting up syncstorage-rs-docker
 
-This is an [Ansible](https://www.ansible.com/) role which installs [syncstorage-rs-docker](https://yourls.org) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
+This is an [Ansible](https://www.ansible.com/) role which installs [syncstorage-rs-docker](https://syncstorage-rs-docker.org) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
 
 syncstorage-rs-docker is a set of PHP scripts that will allow you to run Your Own URL Shortener, on your server.
 
-See the project's [documentation](https://yourls.org/docs) to learn what syncstorage-rs-docker does and why it might be useful to you.
+See the project's [documentation](https://syncstorage-rs-docker.org/docs) to learn what syncstorage-rs-docker does and why it might be useful to you.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ To run a syncstorage-rs-docker instance it is necessary to prepare a [MySQL](htt
 
 If you are looking for an Ansible role for [MariaDB](https://mariadb.org/), you can check out [this role (ansible-role-mariadb)](https://github.com/mother-of-all-self-hosting/ansible-role-mariadb) maintained by the [Mother-of-All-Self-Hosting (MASH)](https://github.com/mother-of-all-self-hosting) team.
 
-See [this section](https://yourls.org/docs#server-requirements) on the official documentation to check server requirements.
+See [this section](https://syncstorage-rs-docker.org/docs#server-requirements) on the official documentation to check server requirements.
 
 ## Adjusting the playbook configuration
 
@@ -94,7 +94,7 @@ Make sure permissions and owner of the directory specified to `src` (the owner s
 After mounting the volume, move/copy the plugin to the `src` directory.
 
 >[!NOTE]
-> The [official image](https://hub.docker.com/_/yourls) does not provide any additional PHP extensions or other libraries, even if they are required by popular plugins. There are an infinite number of possible plugins, and they potentially require extension PHP supports for it. If you need additional PHP extensions, you'll need to create your own image.
+> The [official image](https://hub.docker.com/_/syncstorage-rs-docker) does not provide any additional PHP extensions or other libraries, even if they are required by popular plugins. There are an infinite number of possible plugins, and they potentially require extension PHP supports for it. If you need additional PHP extensions, you'll need to create your own image.
 
 ### Extending the configuration
 
@@ -104,7 +104,7 @@ Take a look at:
 
 - [`defaults/main.yml`](../defaults/main.yml) for some variables that you can customize via your `vars.yml` file. You can override settings (even those that don't have dedicated playbook variables) using the `syncstorage_rs_docker_environment_variables_additional_variables` variable
 
-For a complete list of syncstorage-rs-docker's config options that you could put in `syncstorage_rs_docker_environment_variables_additional_variables`, see its [environment variables](https://yourls.org/docs/guide/essentials/configuration).
+For a complete list of syncstorage-rs-docker's config options that you could put in `syncstorage_rs_docker_environment_variables_additional_variables`, see its [environment variables](https://syncstorage-rs-docker.org/docs/guide/essentials/configuration).
 
 ## Installing
 
@@ -128,7 +128,7 @@ The help file is available at `example.com/readme.html`.
 
 ### Check the service's logs
 
-You can find the logs in [systemd-journald](https://www.freedesktop.org/software/systemd/man/systemd-journald.service.html) by logging in to the server with SSH and running `journalctl -fu yourls` (or how you/your playbook named the service, e.g. `mash-syncstorage-rs-docker`).
+You can find the logs in [systemd-journald](https://www.freedesktop.org/software/systemd/man/systemd-journald.service.html) by logging in to the server with SSH and running `journalctl -fu syncstorage-rs-docker` (or how you/your playbook named the service, e.g. `mash-syncstorage-rs-docker`).
 
 #### Enable debug mode
 
