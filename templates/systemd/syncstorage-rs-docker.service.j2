@@ -49,7 +49,7 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
       {% for arg in syncstorage_rs_docker_container_extra_arguments %}
       {{ arg }} \
       {% endfor %}
-      {{ syncstorage_rs_docker_container_image_self_build_name if syncstorage_rs_docker_container_image_self_build else syncstorage_rs_docker_container_image }}
+      {{ syncstorage_rs_docker_container_image_self_build_name }}
 
 {% for network in syncstorage_rs_docker_container_additional_networks %}
 ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} network connect {{ network }} {{ syncstorage_rs_docker_identifier }}

@@ -14,10 +14,6 @@ syncstorage_rs_docker_enabled: true
 syncstorage_rs_docker_identifier: syncstorage-rs-docker
 syncstorage_rs_docker_base_path: "/{{ syncstorage_rs_docker_identifier }}"
 
-# Note: Update "syncstorage_rs_docker_container_image_self_build_repo_version" when updating
-# renovate: datasource=docker depName=syncstorage-rs-docker versioning=semver
-syncstorage_rs_docker_version: 1.10.1
-
 syncstorage_rs_docker_uid: ""
 syncstorage_rs_docker_gid: ""
 
@@ -31,18 +27,11 @@ syncstorage_rs_docker_scheme: https
 # This value must either be `/` or not end with a slash (e.g. `/syncstorage-rs-docker`).
 syncstorage_rs_docker_path_prefix: /
 
-syncstorage_rs_docker_container_image: "{{ syncstorage_rs_docker_container_image_registry_prefix }}syncstorage-rs-docker:{{ syncstorage_rs_docker_container_image_tag }}"
-syncstorage_rs_docker_container_image_tag: "{{ syncstorage_rs_docker_version }}"
-syncstorage_rs_docker_container_image_registry_prefix: "{{ syncstorage_rs_docker_container_image_registry_prefix_upstream }}"
-syncstorage_rs_docker_container_image_registry_prefix_upstream: "{{ syncstorage_rs_docker_container_image_registry_prefix_upstream_default }}"
-syncstorage_rs_docker_container_image_registry_prefix_upstream_default: docker.io/
-syncstorage_rs_docker_container_image_force_pull: "{{ syncstorage_rs_docker_container_image.endswith(':latest') }}"
-
-syncstorage_rs_docker_container_image_self_build: false
-syncstorage_rs_docker_container_image_self_build_name: "syncstorage-rs-docker/containers:{{ syncstorage_rs_docker_container_image_self_build_repo_version }}"
-syncstorage_rs_docker_container_image_self_build_repo: "https://github.com/syncstorage-rs-docker/containers.git"
-syncstorage_rs_docker_container_image_self_build_repo_version: "d306b06d6b3e94f1441c65385395f7a384a46101" # For 1.10.1
-syncstorage_rs_docker_container_image_self_build_repo_base: "apache"
+# Note: the Docker image is always self-built as it is not provided by the maintainer of the repository
+syncstorage_rs_docker_container_image_self_build_name: "dan-r/syncstorage-rs-docker:{{ syncstorage_rs_docker_container_image_self_build_repo_version }}"
+syncstorage_rs_docker_container_image_self_build_repo: "https://github.com/dan-r/syncstorage-rs-docker.git"
+syncstorage_rs_docker_container_image_self_build_repo_version: "main"
+syncstorage_rs_docker_container_image_self_build_repo_base: "app"
 syncstorage_rs_docker_container_image_self_build_src_files_path: "{{ syncstorage_rs_docker_base_path }}/docker-src"
 
 # Controls whether the container exposes its HTTP port (tcp/80 in the container).
