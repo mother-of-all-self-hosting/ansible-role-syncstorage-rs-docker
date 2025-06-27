@@ -23,20 +23,13 @@ Environment="HOME={{ devture_systemd_docker_base_systemd_unit_home_path }}"
 ExecStartPre=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_systemd_docker_base_host_command_docker }} stop -t {{ devture_systemd_docker_base_container_stop_grace_time_seconds }} {{ syncstorage_rs_docker_identifier }} 2>/dev/null || true'
 ExecStartPre=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_systemd_docker_base_host_command_docker }} rm {{ syncstorage_rs_docker_identifier }} 2>/dev/null || true'
 
-{#
-  Root access with write permission is required for extracting tarball and
-  changing file mode. See: https://github.com/YOURLS/containers/blob/main/images/yourls/Dockerfile.template
-#}
 ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
       --rm \
       --name={{ syncstorage_rs_docker_identifier }} \
       --log-driver=none \
+      --user={{ syncstorage_rs_docker_uid }}:{{ syncstorage_rs_docker_gid }} \
       --cap-drop=ALL \
-      --cap-add=CHOWN \
-      --cap-add=DAC_OVERRIDE \
-      --cap-add=FOWNER \
-      --cap-add=SETGID \
-      --cap-add=SETUID \
+      --read-only \
       --network={{ syncstorage_rs_docker_container_network }} \
       {% if syncstorage_rs_docker_container_http_host_bind_port %}
       -p {{ syncstorage_rs_docker_container_http_host_bind_port }}:{{ syncstorage_rs_docker_container_http_port }} \
