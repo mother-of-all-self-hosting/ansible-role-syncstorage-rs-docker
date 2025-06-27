@@ -7,7 +7,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ---
-# Project source code URL: https://github.com/syncstorage-rs-docker/syncstorage-rs-docker
+# Project source code URL: https://codeberg.org/acioustick/syncstorage-rs-docker
 
 syncstorage_rs_docker_enabled: true
 
@@ -28,9 +28,9 @@ syncstorage_rs_docker_scheme: https
 syncstorage_rs_docker_path_prefix: /
 
 # Note: the Docker image is always self-built as it is not provided by the maintainer of the repository
-syncstorage_rs_docker_container_image_self_build_name: "dan-r/syncstorage-rs-docker:{{ syncstorage_rs_docker_container_image_self_build_repo_version }}"
-syncstorage_rs_docker_container_image_self_build_repo: "https://github.com/dan-r/syncstorage-rs-docker.git"
-syncstorage_rs_docker_container_image_self_build_repo_version: "main"
+syncstorage_rs_docker_container_image_self_build_name: "acioustick/syncstorage-rs-docker:{{ syncstorage_rs_docker_container_image_self_build_repo_version }}"
+syncstorage_rs_docker_container_image_self_build_repo: "https://codeberg.org/acioustick/syncstorage-rs-docker.git"
+syncstorage_rs_docker_container_image_self_build_repo_version: "1.0.0"
 syncstorage_rs_docker_container_image_self_build_repo_base: "app"
 syncstorage_rs_docker_container_image_self_build_src_files_path: "{{ syncstorage_rs_docker_base_path }}/docker-src"
 

@@ -7,7 +7,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 # syncstorage-rs-docker Ansible role
 
-This is an [Ansible](https://www.ansible.com/) role which installs [*syncstorage-rs*](https://github.com/mozilla-services/syncstorage-rs) for self-hosting a Firefox sync server with [*syncstorage-rs-docker*](https://github.com/dan-r/syncstorage-rs-docker) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
+This is an [Ansible](https://www.ansible.com/) role which installs [*syncstorage-rs*](https://github.com/mozilla-services/syncstorage-rs) for self-hosting a Firefox sync server with [*syncstorage-rs-docker*](https://codeberg.org/acioustick/syncstorage-rs-docker) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
 
 This role *implicitly* depends on:
 
