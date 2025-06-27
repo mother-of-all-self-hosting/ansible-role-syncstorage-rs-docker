@@ -18,11 +18,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Setting up syncstorage-rs-docker
 
-This is an [Ansible](https://www.ansible.com/) role which installs [syncstorage-rs-docker](https://syncstorage-rs-docker.org) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
+This is an [Ansible](https://www.ansible.com/) role which installs [syncstorage-rs-docker](https://github.com/dan-r/syncstorage-rs-docker) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
 
 syncstorage-rs-docker is a set of PHP scripts that will allow you to run Your Own URL Shortener, on your server.
 
-See the project's [documentation](https://syncstorage-rs-docker.org/docs) to learn what syncstorage-rs-docker does and why it might be useful to you.
+See the project's [documentation](https://github.com/dan-r/syncstorage-rs-docker/docs) to learn what syncstorage-rs-docker does and why it might be useful to you.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ To run a syncstorage-rs-docker instance it is necessary to prepare a [MySQL](htt
 
 If you are looking for an Ansible role for [MariaDB](https://mariadb.org/), you can check out [this role (ansible-role-mariadb)](https://github.com/mother-of-all-self-hosting/ansible-role-mariadb) maintained by the [Mother-of-All-Self-Hosting (MASH)](https://github.com/mother-of-all-self-hosting) team.
 
-See [this section](https://syncstorage-rs-docker.org/docs#server-requirements) on the official documentation to check server requirements.
+See [this section](https://github.com/dan-r/syncstorage-rs-docker/docs#server-requirements) on the official documentation to check server requirements.
 
 ## Adjusting the playbook configuration
 
@@ -104,7 +104,7 @@ Take a look at:
 
 - [`defaults/main.yml`](../defaults/main.yml) for some variables that you can customize via your `vars.yml` file. You can override settings (even those that don't have dedicated playbook variables) using the `syncstorage_rs_docker_environment_variables_additional_variables` variable
 
-For a complete list of syncstorage-rs-docker's config options that you could put in `syncstorage_rs_docker_environment_variables_additional_variables`, see its [environment variables](https://syncstorage-rs-docker.org/docs/guide/essentials/configuration).
+For a complete list of syncstorage-rs-docker's config options that you could put in `syncstorage_rs_docker_environment_variables_additional_variables`, see its [environment variables](https://github.com/dan-r/syncstorage-rs-docker/docs/guide/essentials/configuration).
 
 ## Installing
 
