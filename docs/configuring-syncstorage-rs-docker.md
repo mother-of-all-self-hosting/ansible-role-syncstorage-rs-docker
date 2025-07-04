@@ -22,6 +22,9 @@ This is an [Ansible](https://www.ansible.com/) role which installs [*syncstorage
 
 See the project's [documentation](https://github.com/mozilla-services/syncstorage-rs/blob/master/README.md) to learn what syncstorage-rs does and [*syncstorage-rs-docker*](https://codeberg.org/acioustick/syncstorage-rs-docker)'s documentation about how to set it up.
 
+>[!NOTE]
+> Setting up your own Firefox Account server is out of scope of this role. See [this page](https://moz-services-docs.readthedocs.io/en/latest/howtos/run-fxa.html) for details about how to set it up.
+
 ## Prerequisites
 
 To run a syncstorage-rs-docker instance it is necessary to prepare a [MySQL](https://www.mysql.com/) compatible database server.
