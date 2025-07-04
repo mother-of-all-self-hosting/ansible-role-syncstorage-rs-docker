@@ -18,7 +18,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Setting up syncstorage-rs-docker
 
-This is an [Ansible](https://www.ansible.com/) role which installs [*syncstorage-rs*](https://github.com/mozilla-services/syncstorage-rs) for self-hosting a Firefox sync server with [*syncstorage-rs-docker*](https://codeberg.org/acioustick/syncstorage-rs-docker) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
+This is an [Ansible](https://www.ansible.com/) role which installs [*syncstorage-rs*](https://github.com/mozilla-services/syncstorage-rs), Mozilla Sync Storage server in Rust used to power Firefox Sync, with [*syncstorage-rs-docker*](https://codeberg.org/acioustick/syncstorage-rs-docker) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
 
 See the project's [documentation](https://github.com/mozilla-services/syncstorage-rs/blob/master/README.md) to learn what syncstorage-rs does and [*syncstorage-rs-docker*](https://codeberg.org/acioustick/syncstorage-rs-docker)'s documentation about how to set it up.
 
