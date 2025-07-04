@@ -13,7 +13,8 @@ path = [
     ".gitignore",
     ".pre-commit-config.yaml",
     ".yamllint.yml",
-    "meta/main.yml"
+    "meta/main.yml",
+    "templates/local.toml.j2"
 ]
 SPDX-FileCopyrightText = "NONE"
 SPDX-License-Identifier = "CC0-1.0"

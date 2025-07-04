@@ -1,0 +1,20 @@
+# See https://codeberg.org/acioustick/syncstorage-rs-docker/src/branch/main/app/entrypoint.sh
+
+master_secret = "{{ syncstorage_rs_docker_environment_variable_sync_master_secret }}"
+
+human_logs = 1
+
+host = "0.0.0.0"
+port = {{ syncstorage_rs_docker_container_http_port }}
+
+syncstorage.database_url = "{{ syncstorage_rs_docker_environment_variable_sync_syncstorage_database_url }}"
+syncstorage.enable_quota = 0
+syncstorage.enabled = {{ syncstorage_rs_docker_environment_variable_syncstorage_enabled | to_json }}
+
+tokenserver.database_url = "{{ syncstorage_rs_docker_environment_variable_sync_tokenserver_database_url }}"
+tokenserver.enabled =  {{ syncstorage_rs_docker_environment_variable_tokenserver_enabled | to_json }}
+tokenserver.fxa_email_domain = "{{ syncstorage_rs_docker_environment_variable_email_domain }}"
+tokenserver.fxa_metrics_hash_secret = "{{ syncstorage_rs_docker_environment_variable_metrics_hash_secret }}"
+tokenserver.fxa_oauth_server_url = "{{ syncstorage_rs_docker_environment_variable_oauth_server_url }}"
+tokenserver.fxa_browserid_audience = "{{ syncstorage_rs_docker_environment_variable_browserid_audience }}"
+tokenserver.fxa_browserid_issuer = "{{ syncstorage_rs_docker_environment_variable_browserid_issuer }}"

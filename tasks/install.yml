@@ -24,6 +24,7 @@
   with_items:
     - env
     - labels
+    - local.toml
 
 # Note: the Docker image is always self-built as it is not provided by the maintainer of the repository
 - name: Ensure syncstorage-rs-docker repository is present on self-build

@@ -173,6 +173,18 @@ syncstorage_rs_docker_environment_variable_loglevel: info
 # Specify the maximum number of users that will be accepted
 syncstorage_rs_docker_environment_variable_sync_capacity: 10
 
+# Control whether syncstorage is enabled
+syncstorage_rs_docker_environment_variable_syncstorage_enabled: true
+
+# Control whether tokenserver is enabled
+syncstorage_rs_docker_environment_variable_tokenserver_enabled: true
+
+# Specify settings for Firefox Accounts Server
+syncstorage_rs_docker_environment_variable_email_domain: api.accounts.firefox.com
+syncstorage_rs_docker_environment_variable_oauth_server_url: https://oauth.accounts.firefox.com
+syncstorage_rs_docker_environment_variable_browserid_audience: https://token.services.mozilla.com
+syncstorage_rs_docker_environment_variable_browserid_issuer: https://api.accounts.firefox.com
+
 # env.j2: MySQL settings
 #
 # MySQL settings
