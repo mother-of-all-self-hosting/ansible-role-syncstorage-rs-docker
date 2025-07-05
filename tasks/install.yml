@@ -26,26 +26,53 @@
     - labels
     - local.toml
 
-# Note: the Docker image is always self-built as it is not provided by the maintainer of the repository
-- name: Ensure syncstorage-rs-docker repository is present on self-build
-  ansible.builtin.git:
-    repo: "{{ syncstorage_rs_docker_container_image_self_build_repo }}"
-    version: "{{ syncstorage_rs_docker_container_image_self_build_repo_version }}"
-    dest: "{{ syncstorage_rs_docker_container_image_self_build_src_files_path }}"
-    force: "yes"
-  register: syncstorage_rs_docker_git_pull_results
+- name: Run if self-building of syncstorage-rs-docker container image is not enabled
+  when: "not syncstorage_rs_docker_container_image_self_build | bool"
+  block:
+    - name: Ensure syncstorage-rs-docker container image is pulled via community.docker.docker_image
+      when: devture_systemd_docker_base_container_image_pull_method == 'ansible-module'
+      community.docker.docker_image:
+        name: "{{ syncstorage_rs_docker_container_image }}"
+        source: "{{ 'pull' if ansible_version.major > 2 or ansible_version.minor > 7 else omit }}"
+        force_source: "{{ syncstorage_rs_docker_container_image_force_pull if ansible_version.major > 2 or ansible_version.minor >= 8 else omit }}"
+        force: "{{ omit if ansible_version.major > 2 or ansible_version.minor >= 8 else syncstorage_rs_docker_container_image_force_pull }}"
+      register: result
+      retries: "{{ devture_playbook_help_container_retries_count }}"
+      delay: "{{ devture_playbook_help_container_retries_delay }}"
+      until: result is not failed
 
-- name: Ensure syncstorage-rs-docker container image is built
-  community.docker.docker_image:
-    name: "{{ syncstorage_rs_docker_container_image_self_build_name }}"
-    source: build
-    force_source: "{{ syncstorage_rs_docker_git_pull_results.changed if ansible_version.major > 2 or ansible_version.minor >= 8 else omit }}"
-    force: "{{ omit if ansible_version.major > 2 or ansible_version.minor >= 8 else syncstorage_rs_docker_git_pull_results.changed }}"
-    build:
-      dockerfile: Dockerfile
-      path: "{{ syncstorage_rs_docker_container_image_self_build_src_files_path }}/{{ syncstorage_rs_docker_container_image_self_build_repo_base }}"
-      pull: true
-      args:
+    - name: Ensure syncstorage-rs-docker container image is pulled via ansible.builtin.command
+      when: devture_systemd_docker_base_container_image_pull_method == 'command'
+      ansible.builtin.command:
+        cmd: "{{ devture_systemd_docker_base_host_command_docker }} pull {{ syncstorage_rs_docker_container_image }}"
+      register: result
+      retries: "{{ devture_playbook_help_container_retries_count }}"
+      delay: "{{ devture_playbook_help_container_retries_delay }}"
+      until: result is not failed
+      changed_when: "'Downloaded newer image' in result.stdout"
+
+- name: Run if self-building of syncstorage-rs-docker container image is enabled
+  when: "syncstorage_rs_docker_container_image_self_build | bool"
+  block:
+    - name: Ensure syncstorage-rs-docker repository is present on self-build
+      ansible.builtin.git:
+        repo: "{{ syncstorage_rs_docker_container_image_self_build_repo }}"
+        version: "{{ syncstorage_rs_docker_container_image_self_build_repo_version }}"
+        dest: "{{ syncstorage_rs_docker_container_image_self_build_src_files_path }}"
+        force: "yes"
+      register: syncstorage_rs_docker_git_pull_results
+
+    - name: Ensure syncstorage-rs-docker container image is built
+      community.docker.docker_image:
+        name: "{{ syncstorage_rs_docker_container_image_self_build_name }}"
+        source: build
+        force_source: "{{ syncstorage_rs_docker_git_pull_results.changed if ansible_version.major > 2 or ansible_version.minor >= 8 else omit }}"
+        force: "{{ omit if ansible_version.major > 2 or ansible_version.minor >= 8 else syncstorage_rs_docker_git_pull_results.changed }}"
+        build:
+          dockerfile: Dockerfile
+          path: "{{ syncstorage_rs_docker_container_image_self_build_src_files_path }}/{{ syncstorage_rs_docker_container_image_self_build_repo_base }}"
+          pull: true
+          args:
 
 - name: Ensure syncstorage-rs-docker container network is created via community.docker.docker_network
   when: devture_systemd_docker_base_container_network_creation_method == 'ansible-module'
