@@ -37,7 +37,7 @@
           {{ devture_systemd_docker_base_host_command_docker }} network rm
           {{ syncstorage_rs_docker_container_network }}
       register: network_deletion_result
-      changed_when: syncstorage_rs_docker_container_network in network_deletion_result.stderr
+      changed_when: syncstorage_rs_docker_container_network in network_deletion_result.stdout
 
     - name: Ensure syncstorage-rs-docker path does not exist
       ansible.builtin.file:
