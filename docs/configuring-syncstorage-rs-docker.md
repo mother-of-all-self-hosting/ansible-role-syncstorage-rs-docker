@@ -113,6 +113,9 @@ After running the command for installation, syncstorage-rs-docker becomes availa
 
 See [this section](https://codeberg.org/acioustick/syncstorage-rs-docker/src/branch/main#adjusting-firefox-setting) on the documentation for details about how to configure Firefox to have it use your server for data synchronization.
 
+>[!NOTE]
+> Log your Firefox out of Firefox Account server if the browser is already signed in, and re-log in to apply the change.
+
 ## Troubleshooting
 
 ### Check the service's logs
