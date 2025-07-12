@@ -14,6 +14,9 @@ syncstorage_rs_docker_enabled: true
 syncstorage_rs_docker_identifier: syncstorage-rs-docker
 syncstorage_rs_docker_base_path: "/{{ syncstorage_rs_docker_identifier }}"
 
+# renovate: datasource=gitea-tags depName=acioustick/syncstorage-rs-docker versioning=semver
+syncstorage_rs_docker_version: 0.18.3
+
 syncstorage_rs_docker_uid: ""
 syncstorage_rs_docker_gid: ""
 
@@ -40,7 +43,7 @@ syncstorage_rs_docker_container_image_force_pull: "{{ syncstorage_rs_docker_cont
 syncstorage_rs_docker_container_image_self_build: true
 syncstorage_rs_docker_container_image_self_build_name: "acioustick/syncstorage-rs-docker:{{ syncstorage_rs_docker_container_image_self_build_repo_version }}"
 syncstorage_rs_docker_container_image_self_build_repo: "https://codeberg.org/acioustick/syncstorage-rs-docker.git"
-syncstorage_rs_docker_container_image_self_build_repo_version: "0.18.3"
+syncstorage_rs_docker_container_image_self_build_repo_version: "{{ syncstorage_rs_docker_version }}"
 syncstorage_rs_docker_container_image_self_build_repo_base: "app"
 syncstorage_rs_docker_container_image_self_build_src_files_path: "{{ syncstorage_rs_docker_base_path }}/docker-src"
 
