@@ -8,7 +8,7 @@
   ansible.builtin.fail:
     msg: >-
       You need to define a required configuration setting (`{{ item }}`).
-  when: "vars[item] == ''"
+  when: "lookup('vars', item, default='') | string | length == 0"
   with_items:
     - syncstorage_rs_docker_uid
     - syncstorage_rs_docker_gid
@@ -26,7 +26,7 @@
       ansible.builtin.fail:
         msg: >-
           You need to define a required configuration setting (`{{ item }}`).
-      when: "vars[item] == ''"
+      when: "lookup('vars', item, default='') | string | length == 0"
       with_items:
         - syncstorage_rs_docker_container_labels_traefik_hostname
         - syncstorage_rs_docker_container_labels_traefik_path_prefix
