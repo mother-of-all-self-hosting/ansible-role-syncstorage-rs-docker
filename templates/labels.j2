@@ -25,11 +25,18 @@ traefik.http.middlewares.{{ syncstorage_rs_docker_identifier }}-strip-prefix.str
 {% set middlewares = middlewares + [syncstorage_rs_docker_identifier + '-strip-prefix'] %}
 {% endif %}
 
+{% if syncstorage_rs_docker_container_labels_traefik_additional_request_headers.keys() | length > 0 %}
+{% for name, value in syncstorage_rs_docker_container_labels_traefik_additional_request_headers.items() %}
+traefik.http.middlewares.{{ syncstorage_rs_docker_identifier }}-add-request-headers.headers.customrequestheaders.{{ name }}={{ value }}
+{% endfor %}
+{% set middlewares = middlewares + [syncstorage_rs_docker_identifier + '-add-request-headers'] %}
+{% endif %}
+
 {% if syncstorage_rs_docker_container_labels_traefik_additional_response_headers.keys() | length > 0 %}
 {% for name, value in syncstorage_rs_docker_container_labels_traefik_additional_response_headers.items() %}
-traefik.http.middlewares.{{ syncstorage_rs_docker_identifier }}-add-headers.headers.customresponseheaders.{{ name }}={{ value }}
+traefik.http.middlewares.{{ syncstorage_rs_docker_identifier }}-add-response-headers.headers.customresponseheaders.{{ name }}={{ value }}
 {% endfor %}
-{% set middlewares = middlewares + [syncstorage_rs_docker_identifier + '-add-headers'] %}
+{% set middlewares = middlewares + [syncstorage_rs_docker_identifier + '-add-response-headers'] %}
 {% endif %}
 
 traefik.http.routers.{{ syncstorage_rs_docker_identifier }}.rule={{ syncstorage_rs_docker_container_labels_traefik_rule }}

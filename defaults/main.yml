@@ -87,6 +87,12 @@ syncstorage_rs_docker_container_labels_traefik_entrypoints: web-secure
 syncstorage_rs_docker_container_labels_traefik_tls: "{{ syncstorage_rs_docker_container_labels_traefik_entrypoints != 'web' }}"
 syncstorage_rs_docker_container_labels_traefik_tls_certResolver: default  # noqa var-naming
 
+# Controls which additional headers to attach to all HTTP requests.
+# To add your own custom request headers, use `syncstorage_rs_docker_container_labels_traefik_additional_request_headers_custom`
+syncstorage_rs_docker_container_labels_traefik_additional_request_headers: "{{ syncstorage_rs_docker_container_labels_traefik_additional_request_headers_auto | combine(syncstorage_rs_docker_container_labels_traefik_additional_request_headers_custom) }}"
+syncstorage_rs_docker_container_labels_traefik_additional_request_headers_auto: {}
+syncstorage_rs_docker_container_labels_traefik_additional_request_headers_custom: {}
+
 # Controls which additional headers to attach to all HTTP responses.
 # To add your own custom response headers, use `syncstorage_rs_docker_container_labels_traefik_additional_response_headers_custom`
 syncstorage_rs_docker_container_labels_traefik_additional_response_headers: "{{ syncstorage_rs_docker_container_labels_traefik_additional_response_headers_auto | combine(syncstorage_rs_docker_container_labels_traefik_additional_response_headers_custom) }}"
