@@ -31,6 +31,13 @@
         - syncstorage_rs_docker_container_labels_traefik_hostname
         - syncstorage_rs_docker_container_labels_traefik_path_prefix
 
+    - name: Fail if syncstorage_rs_docker_container_labels_traefik_path_prefix is different than /
+      ansible.builtin.fail:
+        msg: >-
+          syncstorage_rs_docker_container_labels_traefik_path_prefix (`{{ syncstorage_rs_docker_container_labels_traefik_path_prefix }}`) must be `/`.
+          syncstorage-rs-docker does not support hosting under a subpath yet.
+      when: "syncstorage_rs_docker_container_labels_traefik_path_prefix != '/'"
+
     # We ensure it doesn't end with a slash, because we handle both (slash and no-slash).
     # Knowing that `syncstorage_rs_docker_container_labels_traefik_path_prefix` does not end with a slash
     # ensures we know how to set these routes up without having to do "does it end with a slash" checks elsewhere.
