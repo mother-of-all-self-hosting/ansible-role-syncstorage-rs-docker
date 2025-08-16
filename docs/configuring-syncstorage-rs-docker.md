@@ -84,7 +84,7 @@ You can set variables for a MySQL database by adjusting the configuration on you
 ```yaml
 syncstorage_rs_docker_environment_variable_database_username: sync
 syncstorage_rs_docker_environment_variable_database_hostname: localhost
-syncstorage_rs_docker_environment_variable_database_host_port: 3306
+syncstorage_rs_docker_environment_variable_database_port: 3306
 ```
 
 ### Extending the configuration
