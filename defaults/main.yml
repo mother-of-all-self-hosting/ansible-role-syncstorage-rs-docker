@@ -179,7 +179,7 @@ syncstorage_rs_docker_systemd_wanted_services_list: []
 
 syncstorage_rs_docker_environment_variable_sync_url: "{{ syncstorage_rs_docker_scheme }}://{{ syncstorage_rs_docker_hostname }}"
 
-syncstorage_rs_docker_environment_variable_mysql_password: ""
+syncstorage_rs_docker_environment_variable_database_password: ""
 
 # Master sync key (must be 64 characters long)
 # Put a strong secret below, generated with `pwgen -s 64 1` or in another way
@@ -215,8 +215,8 @@ syncstorage_rs_docker_environment_variable_database_port: 3306
 syncstorage_rs_docker_environment_variable_database_name_syncstorage: syncstorage_rs
 syncstorage_rs_docker_environment_variable_database_name_tokenserver: tokenserver_rs
 
-syncstorage_rs_docker_environment_variable_sync_syncstorage_database_url: mysql://{{ syncstorage_rs_docker_environment_variable_database_username }}:{{ syncstorage_rs_docker_environment_variable_mysql_password }}@{{ syncstorage_rs_docker_environment_variable_database_hostname }}:{{ syncstorage_rs_docker_environment_variable_database_port }}/{{ syncstorage_rs_docker_environment_variable_database_name_syncstorage }}
-syncstorage_rs_docker_environment_variable_sync_tokenserver_database_url: mysql://{{ syncstorage_rs_docker_environment_variable_database_username }}:{{ syncstorage_rs_docker_environment_variable_mysql_password }}@{{ syncstorage_rs_docker_environment_variable_database_hostname }}:{{ syncstorage_rs_docker_environment_variable_database_port }}/{{ syncstorage_rs_docker_environment_variable_database_name_tokenserver }}
+syncstorage_rs_docker_environment_variable_sync_syncstorage_database_url: mysql://{{ syncstorage_rs_docker_environment_variable_database_username }}:{{ syncstorage_rs_docker_environment_variable_database_password }}@{{ syncstorage_rs_docker_environment_variable_database_hostname }}:{{ syncstorage_rs_docker_environment_variable_database_port }}/{{ syncstorage_rs_docker_environment_variable_database_name_syncstorage }}
+syncstorage_rs_docker_environment_variable_sync_tokenserver_database_url: mysql://{{ syncstorage_rs_docker_environment_variable_database_username }}:{{ syncstorage_rs_docker_environment_variable_database_password }}@{{ syncstorage_rs_docker_environment_variable_database_hostname }}:{{ syncstorage_rs_docker_environment_variable_database_port }}/{{ syncstorage_rs_docker_environment_variable_database_name_tokenserver }}
 
 # Additional environment variables.
 syncstorage_rs_docker_environment_variables_additional_variables: ""
