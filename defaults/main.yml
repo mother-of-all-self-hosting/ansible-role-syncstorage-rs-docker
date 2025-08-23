@@ -175,7 +175,10 @@ syncstorage_rs_docker_systemd_required_services_list_auto: []
 syncstorage_rs_docker_systemd_required_services_list_custom: []
 
 # List of systemd services that the syncstorage-rs-docker systemd service wants
-syncstorage_rs_docker_systemd_wanted_services_list: []
+syncstorage_rs_docker_systemd_wanted_services_list: "{{ syncstorage_rs_docker_systemd_wanted_services_list_default + syncstorage_rs_docker_systemd_wanted_services_list_auto + syncstorage_rs_docker_systemd_wanted_services_list_custom }}"
+syncstorage_rs_docker_systemd_wanted_services_list_default: []
+syncstorage_rs_docker_systemd_wanted_services_list_auto: []
+syncstorage_rs_docker_systemd_wanted_services_list_custom: []
 
 syncstorage_rs_docker_environment_variable_sync_url: "{{ syncstorage_rs_docker_scheme }}://{{ syncstorage_rs_docker_hostname }}"
 
