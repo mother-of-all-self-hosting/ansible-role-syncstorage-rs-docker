@@ -40,7 +40,7 @@ To enable syncstorage-rs-docker with this role, add the following configuration 
 ```yaml
 ########################################################################
 #                                                                      #
-# syncstorage-rs-docker                                                #
+# syncstorage_rs_docker                                                #
 #                                                                      #
 ########################################################################
 
@@ -48,7 +48,7 @@ syncstorage_rs_docker_enabled: true
 
 ########################################################################
 #                                                                      #
-# /syncstorage-rs-docker                                               #
+# /syncstorage_rs_docker                                               #
 #                                                                      #
 ########################################################################
 ```
