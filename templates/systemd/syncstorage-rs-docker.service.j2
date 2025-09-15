@@ -29,14 +29,13 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
       --log-driver=none \
       --user={{ syncstorage_rs_docker_uid }}:{{ syncstorage_rs_docker_gid }} \
       --cap-drop=ALL \
-      --read-only \
       --network={{ syncstorage_rs_docker_container_network }} \
       {% if syncstorage_rs_docker_container_http_host_bind_port %}
       -p {{ syncstorage_rs_docker_container_http_host_bind_port }}:{{ syncstorage_rs_docker_container_http_port }} \
       {% endif %}
       --env-file={{ syncstorage_rs_docker_base_path }}/env \
       --label-file={{ syncstorage_rs_docker_base_path }}/labels \
-      --mount type=bind,src={{ syncstorage_rs_docker_base_path }}/local.toml,dst=/config/local.toml,ro \
+      --mount type=bind,src={{ syncstorage_rs_docker_base_path }}/local.toml,dst=/config/local.toml \
       {% for volume in syncstorage_rs_docker_container_additional_volumes %}
       --mount type={{ volume.type | default('bind' if '/' in volume.src else 'volume') }},src={{ volume.src }},dst={{ volume.dst }}{{ (',' + volume.options) if volume.options else '' }} \
       {% endfor %}
