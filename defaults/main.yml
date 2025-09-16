@@ -104,7 +104,7 @@ syncstorage_rs_docker_container_labels_traefik_additional_response_headers_auto:
     | combine ({'X-XSS-Protection': syncstorage_rs_docker_http_header_xss_protection} if syncstorage_rs_docker_http_header_xss_protection else {})
     | combine ({'X-Content-Type-Options': syncstorage_rs_docker_http_header_content_type_options} if syncstorage_rs_docker_http_header_content_type_options else {})
     | combine ({'Content-Security-Policy': syncstorage_rs_docker_http_header_content_security_policy} if syncstorage_rs_docker_http_header_content_security_policy else {})
-    | combine ({'Permission-Policy': syncstorage_rs_docker_http_header_content_permission_policy} if syncstorage_rs_docker_http_header_content_permission_policy else {})
+    | combine ({'Permissions-Policy': syncstorage_rs_docker_http_header_permissions_policy} if syncstorage_rs_docker_http_header_permissions_policy else {})
     | combine ({'Strict-Transport-Security': syncstorage_rs_docker_http_header_strict_transport_security} if syncstorage_rs_docker_http_header_strict_transport_security and syncstorage_rs_docker_container_labels_traefik_tls else {})
   }}
 syncstorage_rs_docker_container_labels_traefik_additional_response_headers_custom: {}
@@ -137,9 +137,9 @@ syncstorage_rs_docker_http_header_content_type_options: nosniff
 # See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 syncstorage_rs_docker_http_header_content_security_policy: frame-ancestors 'self'
 
-# Specifies the value of the `Permission-Policy` header.
-# See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permission-Policy
-syncstorage_rs_docker_http_header_content_permission_policy: "{{ 'interest-cohort=()' if syncstorage_rs_docker_floc_optout_enabled else '' }}"
+# Specifies the value of the `Permissions-Policy` header.
+# See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy
+syncstorage_rs_docker_http_header_permissions_policy: "{{ 'interest-cohort=()' if syncstorage_rs_docker_floc_optout_enabled else '' }}"
 
 # Specifies the value of the `Strict-Transport-Security` header.
 # See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
@@ -153,7 +153,7 @@ syncstorage_rs_docker_http_header_strict_transport_security: "max-age=31536000; 
 # - https://amifloced.org/
 #
 # Of course, a better solution is to just stop using browsers (like Chrome), which participate in such tracking practices.
-# See: `syncstorage_rs_docker_content_permission_policy`
+# See: `syncstorage_rs_docker_http_header_permissions_policy`
 syncstorage_rs_docker_floc_optout_enabled: true
 
 # Controls if HSTS preloading is enabled

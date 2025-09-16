@@ -13,6 +13,7 @@
   with_items:
     - { "old": "syncstorage_rs_docker_environment_variable_database_host_port", "new": "syncstorage_rs_docker_environment_variable_database_port" }
     - { "old": "syncstorage_rs_docker_environment_variable_mysql_password", "new": "syncstorage_rs_docker_environment_variable_database_password" }
+    - { "old": "syncstorage_rs_docker_http_header_content_permission_policy", "new": "syncstorage_rs_docker_http_header_permissions_policy" }
 
 - name: Fail if required syncstorage-rs-docker settings not defined
   ansible.builtin.fail:
