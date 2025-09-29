@@ -82,9 +82,9 @@ As they must be 64 characters long, they can be generated with `pwgen -s 64 1` o
 You can set variables for a MySQL database by adjusting the configuration on your `vars.yml` file as below:
 
 ```yaml
-syncstorage_rs_docker_environment_variable_database_username: sync
-syncstorage_rs_docker_environment_variable_database_hostname: localhost
-syncstorage_rs_docker_environment_variable_database_port: 3306
+syncstorage_rs_docker_database_mysql_username: sync
+syncstorage_rs_docker_database_mysql_hostname: localhost
+syncstorage_rs_docker_database_mysql_port: 3306
 ```
 
 ### Extending the configuration
