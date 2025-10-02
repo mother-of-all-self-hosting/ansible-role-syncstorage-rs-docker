@@ -14,7 +14,7 @@ syncstorage_rs_docker_enabled: true
 syncstorage_rs_docker_identifier: syncstorage-rs-docker
 syncstorage_rs_docker_base_path: "/{{ syncstorage_rs_docker_identifier }}"
 
-# renovate: datasource=gitea-tags depName=acioustick/syncstorage-rs-docker versioning=semver
+# renovate: datasource=forgejo-tags depName=acioustick/syncstorage-rs-docker versioning=semver
 syncstorage_rs_docker_version: 0.21.0
 
 syncstorage_rs_docker_uid: ""
