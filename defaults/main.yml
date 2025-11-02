@@ -7,14 +7,13 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ---
-# Project source code URL: https://codeberg.org/acioustick/syncstorage-rs-docker
+# Project source code URL: https://app.radicle.xyz/nodes/seed.radicle.garden/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g
 
 syncstorage_rs_docker_enabled: true
 
 syncstorage_rs_docker_identifier: syncstorage-rs-docker
 syncstorage_rs_docker_base_path: "/{{ syncstorage_rs_docker_identifier }}"
 
-# renovate: datasource=forgejo-tags depName=acioustick/syncstorage-rs-docker versioning=semver
 syncstorage_rs_docker_version: 0.21.0
 
 syncstorage_rs_docker_uid: ""
@@ -41,8 +40,8 @@ syncstorage_rs_docker_container_image_force_pull: "{{ syncstorage_rs_docker_cont
 # Feel free to set "syncstorage_rs_docker_container_image_self_build" to false and specify settings above
 # about the image registry, if you retrieve a pre-built image from somewhere instead.
 syncstorage_rs_docker_container_image_self_build: true
-syncstorage_rs_docker_container_image_self_build_name: "acioustick/syncstorage-rs-docker:{{ syncstorage_rs_docker_container_image_self_build_repo_version }}"
-syncstorage_rs_docker_container_image_self_build_repo: "https://codeberg.org/acioustick/syncstorage-rs-docker.git"
+syncstorage_rs_docker_container_image_self_build_name: "shirahara/syncstorage-rs-docker:{{ syncstorage_rs_docker_container_image_self_build_repo_version }}"
+syncstorage_rs_docker_container_image_self_build_repo: "https://seed.radicle.garden/z4J84n7U8ea9A91oD1WjAVY6ybU7g.git"
 syncstorage_rs_docker_container_image_self_build_repo_version: "{{ syncstorage_rs_docker_version }}"
 syncstorage_rs_docker_container_image_self_build_repo_base: "app"
 syncstorage_rs_docker_container_image_self_build_src_files_path: "{{ syncstorage_rs_docker_base_path }}/docker-src"
