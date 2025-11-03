@@ -18,9 +18,9 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Setting up syncstorage-rs-docker
 
-This is an [Ansible](https://www.ansible.com/) role which installs [*syncstorage-rs*](https://github.com/mozilla-services/syncstorage-rs), Mozilla Sync Storage server in Rust used to power Firefox Sync, with [*syncstorage-rs-docker*](https://codeberg.org/acioustick/syncstorage-rs-docker) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
+This is an [Ansible](https://www.ansible.com/) role which installs [*syncstorage-rs*](https://github.com/mozilla-services/syncstorage-rs), Mozilla Sync Storage server in Rust used to power Firefox Sync, with [*syncstorage-rs-docker*](https://app.radicle.xyz/nodes/seed.radicle.garden/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
 
-See the project's [documentation](https://github.com/mozilla-services/syncstorage-rs/blob/master/README.md) to learn what syncstorage-rs does and [*syncstorage-rs-docker*](https://codeberg.org/acioustick/syncstorage-rs-docker)'s documentation about how to set it up.
+See the project's [documentation](https://github.com/mozilla-services/syncstorage-rs/blob/master/README.md) to learn what syncstorage-rs does and [*syncstorage-rs-docker*](https://app.radicle.xyz/nodes/seed.radicle.garden/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g)'s documentation about how to set it up.
 
 >[!NOTE]
 > Setting up your own Firefox Account server is out of scope of this role. See [this page](https://moz-services-docs.readthedocs.io/en/latest/howtos/run-fxa.html) for details about how to set it up.
@@ -95,7 +95,7 @@ Take a look at:
 
 - [`defaults/main.yml`](../defaults/main.yml) for some variables that you can customize via your `vars.yml` file. You can override settings (even those that don't have dedicated playbook variables) using the `syncstorage_rs_docker_environment_variables_additional_variables` variable
 
-See its [environment variables](https://codeberg.org/acioustick/syncstorage-rs-docker/src/branch/main/example.env) for a complete list of syncstorage-rs-docker's config options that you could put in `syncstorage_rs_docker_environment_variables_additional_variables`.
+See its [environment variables](https://app.radicle.xyz/nodes/seed.radicle.garden/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g/tree/example.env) for a complete list of syncstorage-rs-docker's config options that you could put in `syncstorage_rs_docker_environment_variables_additional_variables`.
 
 ## Installing
 
@@ -111,7 +111,7 @@ If you use the MASH playbook, the shortcut commands with the [`just` program](ht
 
 After running the command for installation, syncstorage-rs-docker becomes available at the specified hostname such as `example.com`.
 
-See [this section](https://codeberg.org/acioustick/syncstorage-rs-docker/src/branch/main#adjusting-firefox-setting) on the documentation for details about how to configure Firefox to have it use your server for data synchronization.
+See [this section](https://app.radicle.xyz/nodes/seed.radicle.garden/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g/tree/README.md#adjusting-firefox-setting) on the documentation for details about how to configure Firefox to have it use your server for data synchronization.
 
 >[!NOTE]
 > Log your Firefox out of Firefox Account server if the browser is already signed in, and re-log in to apply the change.

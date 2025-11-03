@@ -7,7 +7,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 # syncstorage-rs-docker Ansible role
 
-This is an [Ansible](https://www.ansible.com/) role which installs [*syncstorage-rs*](https://github.com/mozilla-services/syncstorage-rs), Mozilla Sync Storage server in Rust used to power Firefox Sync, with [*syncstorage-rs-docker*](https://codeberg.org/acioustick/syncstorage-rs-docker) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
+This is an [Ansible](https://www.ansible.com/) role which installs [*syncstorage-rs*](https://github.com/mozilla-services/syncstorage-rs), Mozilla Sync Storage server in Rust used to power Firefox Sync, with [*syncstorage-rs-docker*](https://app.radicle.xyz/nodes/seed.radicle.garden/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g) to run as a [Docker](https://www.docker.com/) container wrapped in a systemd service.
 
 >[!NOTE]
 > This role is configured to build the Docker image by default, as it is not provided by the upstream project. Before proceeding, make sure that the machine which you are going to run the Ansible commands against has sufficient computing power to build it.
