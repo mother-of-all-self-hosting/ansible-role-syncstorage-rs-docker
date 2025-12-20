@@ -118,7 +118,9 @@ syncstorage_rs_docker_container_labels_traefik_additional_response_headers_custo
 syncstorage_rs_docker_container_labels_additional_labels: ""
 
 # A list of extra arguments to pass to the container (`docker run` command)
-syncstorage_rs_docker_container_extra_arguments: []
+syncstorage_rs_docker_container_extra_arguments: "{{ syncstorage_rs_docker_container_extra_arguments_auto + syncstorage_rs_docker_container_extra_arguments_custom }}"
+syncstorage_rs_docker_container_extra_arguments_auto: []
+syncstorage_rs_docker_container_extra_arguments_custom: []
 
 # Specifies the value of the `X-XSS-Protection` header
 # Stops pages from loading when they detect reflected cross-site scripting (XSS) attacks.
