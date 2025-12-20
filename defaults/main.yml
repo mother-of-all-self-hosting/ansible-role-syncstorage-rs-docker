@@ -179,6 +179,9 @@ syncstorage_rs_docker_systemd_wanted_services_list_default: []
 syncstorage_rs_docker_systemd_wanted_services_list_auto: []
 syncstorage_rs_docker_systemd_wanted_services_list_custom: []
 
+# Specify the timezone
+syncstorage_rs_docker_environment_variables_tz: UTC
+
 syncstorage_rs_docker_environment_variable_sync_url: "{{ syncstorage_rs_docker_scheme }}://{{ syncstorage_rs_docker_hostname }}"
 
 # Master sync key (must be 64 characters long)
