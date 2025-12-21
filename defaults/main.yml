@@ -120,7 +120,7 @@ syncstorage_rs_docker_container_labels_additional_labels: "{{ syncstorage_rs_doc
 syncstorage_rs_docker_container_labels_additional_labels_auto: {}
 syncstorage_rs_docker_container_labels_additional_labels_custom: {}
 
-# A list of extra arguments to pass to the container (`docker run` command)
+# A list of extra arguments to pass to the container (`docker create` command)
 syncstorage_rs_docker_container_extra_arguments: "{{ syncstorage_rs_docker_container_extra_arguments_auto + syncstorage_rs_docker_container_extra_arguments_custom }}"
 syncstorage_rs_docker_container_extra_arguments_auto: []
 syncstorage_rs_docker_container_extra_arguments_custom: []
