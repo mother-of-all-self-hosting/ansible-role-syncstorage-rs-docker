@@ -56,4 +56,6 @@ traefik.http.routers.{{ syncstorage_rs_docker_identifier }}.tls.certResolver={{ 
 traefik.http.services.{{ syncstorage_rs_docker_identifier }}.loadbalancer.server.port={{ syncstorage_rs_docker_container_http_port }}
 {% endif %}
 
-{{ syncstorage_rs_docker_container_labels_additional_labels }}
+{% for arg in syncstorage_rs_docker_container_labels_additional_labels %}
+{{ arg }}
+{% endfor %}
