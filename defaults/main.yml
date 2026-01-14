@@ -19,11 +19,11 @@ syncstorage_rs_docker_version: 0.21.0
 syncstorage_rs_docker_uid: ""
 syncstorage_rs_docker_gid: ""
 
+# The scheme used for serving syncstorage-rs-docker.
+syncstorage_rs_docker_scheme: https
+
 # The hostname at which syncstorage-rs-docker is served.
 syncstorage_rs_docker_hostname: ""
-
-# Specify URI scheme for syncstorage_rs_docker_environment_variable_sync_url.
-syncstorage_rs_docker_scheme: https
 
 # The path at which syncstorage-rs-docker is served.
 # This value must either be `/` or not end with a slash (e.g. `/syncstorage-rs-docker`).
