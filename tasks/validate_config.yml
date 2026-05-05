@@ -20,6 +20,7 @@
     - { "old": "syncstorage_rs_docker_environment_variable_database_name_syncstorage", "new": "syncstorage_rs_docker_database_name_syncstorage" }
     - { "old": "syncstorage_rs_docker_environment_variable_database_name_tokenserver", "new": "syncstorage_rs_docker_database_name_tokenserver" }
     - { "old": "syncstorage_rs_docker_http_header_content_permission_policy", "new": "syncstorage_rs_docker_http_header_permissions_policy" }
+    - { "old": "syncstorage_rs_docker_container_image_force_pull", "new": "<removed> (the new community.docker.docker_image_pull module handles this natively)" }
 
 - name: Fail if required syncstorage-rs-docker settings not defined
   ansible.builtin.fail:
