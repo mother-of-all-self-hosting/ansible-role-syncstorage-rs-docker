@@ -7,7 +7,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 ---
-# Project source code URL: https://radicle.network/nodes/seed.radicle.garden/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g
+# Project source code URL: https://radicle.network/nodes/iris.radicle.network/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g
 
 syncstorage_rs_docker_enabled: true
 
@@ -40,7 +40,7 @@ syncstorage_rs_docker_container_image_registry_prefix_upstream_default: ""
 # about the image registry, if you retrieve a pre-built image from somewhere instead.
 syncstorage_rs_docker_container_image_self_build: true
 syncstorage_rs_docker_container_image_self_build_name: "shirahara/syncstorage-rs-docker:{{ syncstorage_rs_docker_container_image_self_build_repo_version }}"
-syncstorage_rs_docker_container_image_self_build_repo: "https://seed.radicle.garden/z4J84n7U8ea9A91oD1WjAVY6ybU7g.git"
+syncstorage_rs_docker_container_image_self_build_repo: "https://iris.radicle.network/z4J84n7U8ea9A91oD1WjAVY6ybU7g.git"
 syncstorage_rs_docker_container_image_self_build_repo_version: "{{ syncstorage_rs_docker_version }}"
 syncstorage_rs_docker_container_image_self_build_repo_base: "app"
 syncstorage_rs_docker_container_image_self_build_src_files_path: "{{ syncstorage_rs_docker_base_path }}/docker-src"
