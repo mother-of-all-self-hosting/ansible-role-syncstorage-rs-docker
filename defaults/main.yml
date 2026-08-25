@@ -14,6 +14,14 @@ syncstorage_rs_docker_enabled: true
 syncstorage_rs_docker_identifier: syncstorage-rs-docker
 syncstorage_rs_docker_base_path: "/{{ syncstorage_rs_docker_identifier }}"
 
+# The version of the syncstorage-rs-docker repository (see the URL above) that the
+# container image is built from. Its tags carry no `v` prefix and match the version
+# of mozilla-services/syncstorage-rs that the image's Dockerfile compiles.
+#
+# The repository is not hosted on a forge Renovate knows how to query, and no
+# pre-built image of it is published anywhere, so the tags are read straight off
+# the git remote.
+# renovate: datasource=git-tags depName=https://iris.radicle.network/z4J84n7U8ea9A91oD1WjAVY6ybU7g.git
 syncstorage_rs_docker_version: 0.21.0
 
 syncstorage_rs_docker_uid: ""

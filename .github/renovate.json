@@ -1,5 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": [
+    "Nothing about the managed software is automerged here: the role builds its image from source on the operator's own server, and the image's entrypoint runs `diesel migration run` against the live Firefox Sync databases (bookmarks, history, saved passwords) on every start, which a fresh-install test cannot vouch for.",
+    "`syncstorage_rs_docker_version` is a git tag of the syncstorage-rs-docker repository the image is built from, so it is tracked with the `git-tags` datasource rather than a registry one - no pre-built image of that repository is published anywhere."
+  ],
   "extends": [
     "github>mother-of-all-self-hosting/renovate-config#v1.0.0"
   ]
