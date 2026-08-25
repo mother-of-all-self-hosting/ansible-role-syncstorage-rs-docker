@@ -37,6 +37,21 @@
     - syncstorage_rs_docker_environment_variable_sync_master_secret
     - syncstorage_rs_docker_environment_variable_metrics_hash_secret
 
+# Without this, the `docker create` line in the systemd service ends with no image
+# argument at all, and the only sign of it is the service failing to start later.
+- name: Fail if no syncstorage-rs-docker container image is given to run
+  ansible.builtin.fail:
+    msg: >-
+      You have turned off self-building of the syncstorage-rs-docker container image
+      (`syncstorage_rs_docker_container_image_self_build`), so you need to tell the role which
+      pre-built image to run by setting `syncstorage_rs_docker_container_image` to its full
+      reference, registry and tag included.
+      Note that this role does not assemble that reference out of
+      `syncstorage_rs_docker_container_image_registry_prefix` and
+      `syncstorage_rs_docker_container_image_tag` - those variables exist but are not used
+      anywhere, because the syncstorage-rs-docker project publishes no image for them to point at.
+  when: "not syncstorage_rs_docker_container_image_self_build | bool and syncstorage_rs_docker_container_image | string | length == 0"
+
 - name: Run if Traefik is enabled
   when: syncstorage_rs_docker_container_labels_traefik_enabled | bool
   block:

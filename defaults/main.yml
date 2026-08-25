@@ -37,7 +37,15 @@ syncstorage_rs_docker_hostname: ""
 # This value must either be `/` or not end with a slash (e.g. `/syncstorage-rs-docker`).
 syncstorage_rs_docker_path_prefix: /
 
+# The full reference of a pre-built container image to run, registry and tag included
+# (e.g. `docker.io/someone/syncstorage-rs-docker:0.21.0`). Only consulted when
+# `syncstorage_rs_docker_container_image_self_build` is disabled.
 syncstorage_rs_docker_container_image: ""
+
+# Note: the three variables below are not used anywhere in this role. The
+# syncstorage-rs-docker project publishes no container image, so there is no image
+# reference for the role to assemble out of them; pass the whole reference through
+# `syncstorage_rs_docker_container_image` instead.
 syncstorage_rs_docker_container_image_tag: ""
 syncstorage_rs_docker_container_image_registry_prefix: "{{ syncstorage_rs_docker_container_image_registry_prefix_upstream }}"
 syncstorage_rs_docker_container_image_registry_prefix_upstream: "{{ syncstorage_rs_docker_container_image_registry_prefix_upstream_default }}"
