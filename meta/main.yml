@@ -3,7 +3,7 @@ galaxy_info:
   author: Suguru Hirahara
   company: progressiv
   role_name: syncstorage_rs_docker
-  namespace: progressiv
+  namespace: mash
   description: syncstorage-rs-docker
   platforms:
     - name: Debian
