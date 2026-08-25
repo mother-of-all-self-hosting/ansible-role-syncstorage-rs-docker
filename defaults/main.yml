@@ -64,7 +64,11 @@ syncstorage_rs_docker_container_network_deletion_enabled: true
 # Takes an "<ip>:<port>" or "<port>" value (e.g. "127.0.0.1:2586"), or empty string to not expose.
 syncstorage_rs_docker_container_http_host_bind_port: ""
 
-# The port number in the container
+# The port number in the container.
+#
+# This reaches the service through the `port` setting of the `local.toml` file
+# that the role renders, which is why that file is mounted read-only - see the
+# comment in `../templates/systemd/syncstorage-rs-docker.service.j2`.
 syncstorage_rs_docker_container_http_port: 8000
 
 # A list of additional container networks that the container would be connected to.
@@ -252,6 +256,11 @@ syncstorage_rs_docker_environment_variable_tokenserver_enabled: true
 # Specify settings for Firefox Accounts Server
 syncstorage_rs_docker_environment_variable_email_domain: api.accounts.firefox.com
 syncstorage_rs_docker_environment_variable_oauth_server_url: https://oauth.accounts.firefox.com
+
+# Note: syncstorage-rs dropped BrowserID verification. Neither of the two settings
+# below appears in its `tokenserver` settings struct (checked at 0.18.3 and 0.21.0),
+# so it parses them out of `local.toml` and then ignores them. They are kept for
+# compatibility with configurations that set them.
 syncstorage_rs_docker_environment_variable_browserid_audience: https://token.services.mozilla.com
 syncstorage_rs_docker_environment_variable_browserid_issuer: https://api.accounts.firefox.com
 

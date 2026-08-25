@@ -118,6 +118,16 @@ See [this section](https://radicle.network/nodes/iris.radicle.network/rad%3Az4J8
 
 ## Troubleshooting
 
+### `local.toml: Read-only file system` in the logs
+
+This line is expected and harmless:
+
+```text
+/entrypoint.sh: line 35: /config/local.toml: Read-only file system
+```
+
+The role renders the service's `local.toml` from the variables you set and mounts it into the container read-only. The container's own entrypoint script tries to overwrite that file with hardcoded settings of its own on every start, and the read-only mount is what stops it. Without it, nothing the role writes there — the port the service listens on, the Firefox Accounts server settings, whether the tokenserver is enabled — would have any effect. The entrypoint carries on past the refused write, so the database migrations and the seeding of the tokenserver's node table still happen as usual.
+
 ### Check the service's logs
 
 You can find the logs in [systemd-journald](https://www.freedesktop.org/software/systemd/man/systemd-journald.service.html) by logging in to the server with SSH and running `journalctl -fu syncstorage-rs-docker` (or how you/your playbook named the service, e.g. `mash-syncstorage-rs-docker`).

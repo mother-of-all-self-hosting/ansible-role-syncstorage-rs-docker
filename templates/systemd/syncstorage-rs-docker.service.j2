@@ -22,6 +22,23 @@ Type=simple
 Environment="HOME={{ devture_systemd_docker_base_systemd_unit_home_path }}"
 ExecStartPre={{ devture_systemd_docker_base_host_command_sh }} -c '{{ syncstorage_rs_docker_container_cleanup_command | trim | replace("\n", " ") }}'
 
+{#
+  local.toml is mounted read-only on purpose. The container's entrypoint
+  unconditionally does `cat > /config/local.toml`, so with a writable mount it
+  overwrites the file this role renders, on the host, on every single start.
+  What it writes in its place is hardcoded (`port = 8000`,
+  `tokenserver.fxa_email_domain = "api.accounts.firefox.com"`, ...), so every
+  setting that only reaches the service through local.toml used to have no
+  effect at all - and Ansible re-rendered the clobbered file on the next run,
+  which restarted the service every time the playbook ran.
+
+  The entrypoint has no `set -e`, so the refused write is just a
+  `/entrypoint.sh: line 35: /config/local.toml: Read-only file system` line in
+  the log. Everything after it - the database migrations, and the seeding of the
+  tokenserver's `services` and `nodes` rows out of SYNC_URL and SYNC_CAPACITY -
+  still runs, and the service then starts against the configuration this role
+  rendered.
+#}
 ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
       --rm \
       --name={{ syncstorage_rs_docker_identifier }} \
@@ -34,7 +51,7 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
       {% endif %}
       --env-file={{ syncstorage_rs_docker_base_path }}/env \
       --label-file={{ syncstorage_rs_docker_base_path }}/labels \
-      --mount type=bind,src={{ syncstorage_rs_docker_base_path }}/local.toml,dst=/config/local.toml \
+      --mount type=bind,src={{ syncstorage_rs_docker_base_path }}/local.toml,dst=/config/local.toml,readonly \
       {% for volume in syncstorage_rs_docker_container_additional_volumes %}
       --mount type={{ volume.type | default('bind' if '/' in volume.src else 'volume') }},src={{ volume.src }},dst={{ volume.dst }}{{ (',' + volume.options) if volume.options | default('') else '' }} \
       {% endfor %}
