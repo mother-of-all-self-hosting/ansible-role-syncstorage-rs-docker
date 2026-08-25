@@ -118,6 +118,20 @@ See [this section](https://radicle.network/nodes/iris.radicle.network/rad%3Az4J8
 
 ## Troubleshooting
 
+### The container image fails to build with ``error: `max` is ambiguous``
+
+Building the image runs `cargo install` against [mozilla-services/syncstorage-rs](https://github.com/mozilla-services/syncstorage-rs) inside the `rust:slim` base image, which is an unpinned tag and therefore whichever Rust release is current on the day you install. Rust 1.98 rejects code that older releases only warned about, and syncstorage-rs 0.21.0 — the version pinned by `syncstorage_rs_docker_version` — trips over it:
+
+```text
+error: `max` is ambiguous
+   --> syncstorage-mysql/src/models.rs:8:10
+error: could not compile `syncstorage-mysql` (lib) due to 2 previous errors
+```
+
+The same source builds cleanly under Rust 1.90 and 1.94, and syncstorage-rs 0.22.0 and later do not have the problem. Until [syncstorage-rs-docker](https://radicle.network/nodes/iris.radicle.network/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g)'s `Dockerfile` pins its base image or publishes a tag built against a newer syncstorage-rs, there is nothing this role can set to work around it.
+
+An installation that is already running is not affected: the role only rebuilds the image when the checkout of the syncstorage-rs-docker repository changes, so an existing image keeps being used.
+
 ### `local.toml: Read-only file system` in the logs
 
 This line is expected and harmless:
