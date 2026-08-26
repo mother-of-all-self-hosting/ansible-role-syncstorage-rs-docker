@@ -5,6 +5,6 @@
     "`syncstorage_rs_docker_version` is a git tag of the syncstorage-rs-docker repository the image is built from, so it is tracked with the `git-tags` datasource rather than a registry one - no pre-built image of that repository is published anywhere."
   ],
   "extends": [
-    "github>mother-of-all-self-hosting/renovate-config#v1.0.0"
+    "github>mother-of-all-self-hosting/renovate-config#v1.1.0"
   ]
 }
