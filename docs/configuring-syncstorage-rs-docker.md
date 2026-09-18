@@ -95,7 +95,7 @@ Take a look at:
 
 - [`defaults/main.yml`](../defaults/main.yml) for some variables that you can customize via your `vars.yml` file. You can override settings (even those that don't have dedicated playbook variables) using the `syncstorage_rs_docker_environment_variables_additional_variables` variable
 
-See its [environment variables](https://radicle.network/nodes/iris.radicle.network/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g/tree/example.env) for a complete list of syncstorage-rs-docker's config options that you could put in `syncstorage_rs_docker_environment_variables_additional_variables`.
+See its [environment variables](https://radicle.network/nodes/iris.radicle.network/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g/tree/example.env) for a complete list of syncstorage-rs-docker's config options that you can put in `syncstorage_rs_docker_environment_variables_additional_variables`.
 
 ## Installing
 
