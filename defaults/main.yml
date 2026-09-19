@@ -147,6 +147,12 @@ syncstorage_rs_docker_container_extra_arguments: "{{ syncstorage_rs_docker_conta
 syncstorage_rs_docker_container_extra_arguments_auto: []
 syncstorage_rs_docker_container_extra_arguments_custom: []
 
+# A list of extra arguments to pass to the process inside the container
+# Example: ['--SOME_ARGUMENT']
+syncstorage_rs_docker_process_extra_arguments: "{{ syncstorage_rs_docker_process_extra_arguments_auto + syncstorage_rs_docker_process_extra_arguments_custom }}"
+syncstorage_rs_docker_process_extra_arguments_auto: []
+syncstorage_rs_docker_process_extra_arguments_custom: []
+
 # Specifies the value of the `X-XSS-Protection` header
 # Stops pages from loading when they detect reflected cross-site scripting (XSS) attacks.
 #
