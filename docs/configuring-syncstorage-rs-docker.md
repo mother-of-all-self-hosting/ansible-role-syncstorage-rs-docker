@@ -23,7 +23,7 @@ This is an [Ansible](https://www.ansible.com/) role which installs [*syncstorage
 See the project's [documentation](https://github.com/mozilla-services/syncstorage-rs/blob/master/README.md) to learn what syncstorage-rs does and [*syncstorage-rs-docker*](https://radicle.network/nodes/iris.radicle.network/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g)'s documentation about how to set it up.
 
 >[!NOTE]
-> Setting up your own Firefox Account server is out of scope of this role. See [this page](https://moz-services-docs.readthedocs.io/en/latest/howtos/run-fxa.html) for details about how to set it up.
+> Setting up your own Firefox Account server is out of scope of this role. Refer to [this page](https://moz-services-docs.readthedocs.io/en/latest/howtos/run-fxa.html) for details about how to set it up.
 
 ## Prerequisites
 
@@ -111,7 +111,7 @@ If you use the MASH playbook, the shortcut commands with the [`just` program](ht
 
 After running the command for installation, syncstorage-rs-docker becomes available at the specified hostname such as `example.com`.
 
-See [this section](https://radicle.network/nodes/iris.radicle.network/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g/tree/README.md#adjusting-firefox-setting) on the documentation for details about how to configure Firefox to have it use your server for data synchronization.
+Refer to [this section](https://radicle.network/nodes/iris.radicle.network/rad%3Az4J84n7U8ea9A91oD1WjAVY6ybU7g/tree/README.md#adjusting-firefox-setting) on the documentation for details about how to configure Firefox to have it use your server for data synchronization.
 
 >[!NOTE]
 > Log your Firefox out of Firefox Account server if the browser is already signed in, and re-log in to apply the change.
